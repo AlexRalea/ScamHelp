@@ -9,7 +9,27 @@
       "Bash(npm install three)",
       "Bash(npm install -D @types/three)",
       "Bash(node -e \"const p = require\\(''d:/Proiecte/ScamHelp/node_modules/three/package.json''\\); console.log\\(p.version\\)\")",
-      "Bash(node -e \"require.resolve\\(''three/addons/environments/RoomEnvironment.js''\\)\")"
+      "Bash(node -e \"require.resolve\\(''three/addons/environments/RoomEnvironment.js''\\)\")",
+      "WebFetch(domain:landio.framer.website)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(ls -lh dist/_astro/*.js)",
+      "Bash(ls -lh d:/Proiecte/ScamHelp/dist/_astro/*.js)",
+      "Bash(ffmpeg -version)",
+      "Bash(ffmpeg -i d:/Proiecte/ScamHelp/public/hero_video.mp4 -vcodec libx264 -crf 28 -vf scale=1280:-2 -an d:/Proiecte/ScamHelp/public/hero_video_compressed.mp4)",
+      "Bash(mv hero_video.mp4 hero_video_original.mp4)",
+      "Bash(mv hero_video_compressed.mp4 hero_video.mp4)",
+      "Bash(sed 's/&lsquo;/'/g' | sed 's/)",
+      "Bash(rsquo)",
+      "Bash(/'/g')",
+      "Read(//tmp/**)",
+      "Bash(where python:*)",
+      "Bash(where python3:*)",
+      "Bash(where node:*)",
+      "Bash(where perl:*)",
+      "Bash(node -e ':*)",
+      "Bash(node -e \"const fs=require\\('fs'\\); const d=fs.readFileSync\\('/tmp/dpa_content.txt','utf-8'\\).split\\('\\\\\\\\n'\\); console.log\\('Total lines:', d.length\\);\")",
+      "Bash(npx astro:*)"
     ]
   }
 }
