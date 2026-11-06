@@ -4,9 +4,9 @@ import Navbar from '../components/Navbar.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
 
-const base = import.meta.env.BASE_URL;
+import { BASE as base, url } from '../lib/site';
 
-const siteUrl = "https://alexralea.github.io/ScamHelp";
+const siteUrl = "https://scamhelp.net";
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -25,7 +25,7 @@ const phones = [
 ];
 ---
 
-<Layout title="Contact Us — ScamHelp" description="Get in touch with ScamHelp. Our anti-fraud specialists are ready to help you recover your lost funds. Free consultation available." canonical="https://alexralea.github.io/ScamHelp/contact-us/">
+<Layout title="Contact Us — ScamHelp" description="Get in touch with ScamHelp. Our anti-fraud specialists are ready to help you recover your lost funds. Free consultation available.">
   <Navbar />
   <main class="bg-[#0a0a0f]">
 

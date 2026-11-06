@@ -4,9 +4,9 @@ import Navbar from '../components/Navbar.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
 import Footer from '../components/Footer.astro';
 
-const base = import.meta.env.BASE_URL;
+import { BASE as base, url } from '../lib/site';
 
-const siteUrl = "https://alexralea.github.io/ScamHelp";
+const siteUrl = "https://scamhelp.net";
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -56,7 +56,7 @@ const faqs = [
 ];
 ---
 
-<Layout title="Know Your Rights — ScamHelp" description="Learn about your rights as a fraud victim. Scam Help is an asset recovery firm licensed and regulated by the Ministry of Justice and the European Commission." canonical="https://alexralea.github.io/ScamHelp/rights/">
+<Layout title="Know Your Rights — ScamHelp" description="Learn about your rights as a fraud victim. Scam Help is an asset recovery firm licensed and regulated by the Ministry of Justice and the European Commission.">
   <Navbar />
   <main class="bg-[#0a0a0f]">
 

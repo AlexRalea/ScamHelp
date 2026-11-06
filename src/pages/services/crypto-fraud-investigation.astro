@@ -4,9 +4,9 @@ import Navbar from '../../components/Navbar.astro';
 import ConsultationSection from '../../components/ConsultationSection.astro';
 import Footer from '../../components/Footer.astro';
 
-const base = import.meta.env.BASE_URL;
+import { BASE as base, url } from '../../lib/site';
 
-const siteUrl = "https://alexralea.github.io/ScamHelp";
+const siteUrl = "https://scamhelp.net";
 
 const services = [
   {
@@ -110,7 +110,6 @@ const serviceSchema = {
 <Layout
   title="Crypto Investigation Services — ScamHelp | Blockchain Forensics"
   description="ScamHelp's cryptocurrency investigation services uncover fraudulent activities using advanced blockchain forensics. Expert analysis, asset recovery. Free consultation."
-  canonical={`${siteUrl}/services/crypto-investigation`}
 >
   <Navbar />
 

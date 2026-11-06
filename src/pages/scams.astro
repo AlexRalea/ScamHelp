@@ -4,9 +4,9 @@ import Navbar from '../components/Navbar.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
 import Footer from '../components/Footer.astro';
 
-const base = import.meta.env.BASE_URL;
+import { BASE as base, url } from '../lib/site';
 
-const siteUrl = "https://alexralea.github.io/ScamHelp";
+const siteUrl = "https://scamhelp.net";
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -102,7 +102,7 @@ const scams = [
 ];
 ---
 
-<Layout title="Common Scams — ScamHelp" description="Learn about common scams including Forex fraud, binary options, cryptocurrency scams, fake exchanges, and more. Scam Help specializes in recovering assets lost to financial fraud." canonical="https://alexralea.github.io/ScamHelp/scams/">
+<Layout title="Common Scams — ScamHelp" description="Learn about common scams including Forex fraud, binary options, cryptocurrency scams, fake exchanges, and more. Scam Help specializes in recovering assets lost to financial fraud.">
   <Navbar />
   <main class="bg-[#0a0a0f]">
 
@@ -167,7 +167,7 @@ const scams = [
             <div class={`reveal ${isEven ? 'lg:order-2 from-right' : 'lg:order-1 from-left'}`}>
               <div class={`scam-image-card rounded-2xl border ${isEven ? 'border-white/5 bg-white/[0.02]' : 'border-[#e8e8e8] bg-[#f8f8f8]'} overflow-hidden relative`} style="height:380px;">
                 {scam.image ? (
-                  <img src={`${import.meta.env.BASE_URL}/${scam.image}`} alt={`${scam.title} ${scam.highlight}`} class="w-full h-full object-cover" loading="lazy" />
+                  <img src={`${base}/${scam.image}`} alt={`${scam.title} ${scam.highlight}`} class="w-full h-full object-cover" loading="lazy" />
                 ) : (
                   <>
                     <div class="absolute inset-0 flex items-center justify-center">

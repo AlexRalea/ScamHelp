@@ -24,8 +24,8 @@ export async function getStaticPaths() {
 /* ────────────────────────────────────────────
    Current page
    ──────────────────────────────────────────── */
-const base = import.meta.env.BASE_URL;
-const siteUrl = "https://alexralea.github.io/ScamHelp";
+import { BASE as base, url } from '../lib/site';
+const siteUrl = "https://scamhelp.net";
 
 const { slug } = Astro.params;
 const scam = Astro.props;
@@ -59,7 +59,7 @@ const serviceSchema = {
 };
 ---
 
-<Layout title={scam.seoTitle} description={scam.seoDescription} canonical={canonical}>
+<Layout title={scam.seoTitle} description={scam.seoDescription}>
   <Navbar />
   <main class="bg-[#0a0a0f]">
 

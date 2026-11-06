@@ -1,8 +1,10 @@
 ---
+import { url } from '../lib/site';
+
 const benefits = [
   "Free & confidential assessment",
   "No obligation consultation",
-  "Response within 24 hours",
+  "Response within 48 hours",
   "Expert case evaluation",
 ];
 
@@ -17,7 +19,7 @@ const inputClasses = "w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08
   <!-- Video background (clipped to section bounds) -->
   <div class="absolute inset-0 z-[0] overflow-hidden pointer-events-none">
     <video id="consultation-video" autoplay muted loop playsinline preload="metadata" class="consultation-video w-full h-full object-cover">
-      <source src={`${import.meta.env.BASE_URL}/form_section_video.mp4`} type="video/mp4" />
+      <source src={url('/form_section_video.mp4')} type="video/mp4" />
     </video>
   </div>
 
@@ -30,12 +32,12 @@ const inputClasses = "w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08
           Get Started
         </span>
         <h2 class="text-white mb-3 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(22px,2.8vw,34px);font-weight:600;line-height:1.2">
-          Get a free consultation to see if you are{" "}
-          <span class="text-[#9ACF84]">eligible for a refund</span>
+          Get a free, confidential{" "}
+          <span class="text-[#9ACF84]">case assessment</span>
         </h2>
         <p class="text-white/40 mb-6 reveal" style="font-size:13px;line-height:1.7">
-          Fill out the form to get a free, confidential consultation with our recovery
-          specialists. We'll assess your case and advise on the best course of action.
+          Tell us what happened. Our investigators will review your case and tell you honestly
+          whether we believe we can help.
         </p>
         <div class="space-y-2.5">
           {benefits.map((item, i) => (
@@ -122,8 +124,10 @@ const inputClasses = "w-full px-4 py-3 bg-white/[0.04] border border-white/[0.08
             Submit
           </button>
 
-          <p class="text-white/20 text-center" style="font-size:11px">
-            Your information is confidential and secure.
+          <p class="text-white/40 text-center" style="font-size:11px;line-height:1.6">
+            By submitting this form, you agree that Transparent Business Solutions B.V. (ScamHelp) processes
+            your details to respond to your enquiry, as described in our
+            <a href={url('/privacy-policy/')} class="text-[#9ACF84] hover:underline">Privacy Policy</a>.
           </p>
 
         </form>

@@ -1,4 +1,6 @@
 ---
+import { url } from '../lib/site';
+
 export interface Props {
   title?: string;
   subtitle?: string;
@@ -7,7 +9,7 @@ export interface Props {
 
 const {
   title = "Send us a message",
-  subtitle = "Fill out the form below and we'll get back to you within 24 hours.",
+  subtitle = "Tell us what happened. Our investigators will review your case and tell you honestly whether we believe we can help.",
   id = "contact-form",
 } = Astro.props;
 ---
@@ -38,10 +40,14 @@ const {
     <textarea name="message" rows="5" placeholder="Message" class="contact-input" style="resize:none;"></textarea>
 
     <button type="submit" class="w-full flex items-center justify-center gap-2 px-8 py-3.5 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors duration-200" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">
-      Get A Free Consultation
+      Get a free case assessment
     </button>
 
-    <p class="text-white/20 text-center" style="font-size:11px">Your information is confidential and secure.</p>
+    <p class="text-white/40 text-center" style="font-size:11px;line-height:1.6">
+      By submitting this form, you agree that Transparent Business Solutions B.V. (ScamHelp) processes
+      your details to respond to your enquiry, as described in our
+      <a href={url('/privacy-policy/')} class="text-[#9ACF84] hover:underline">Privacy Policy</a>.
+    </p>
   </form>
 </div>
 

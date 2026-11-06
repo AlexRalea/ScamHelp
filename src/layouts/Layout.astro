@@ -1,102 +1,53 @@
 ---
 import '../styles/index.css';
+import CookieConsent from '../components/CookieConsent.astro';
+import { BASE, IS_PRODUCTION, SITE_URL, GTM_ID, url, abs } from '../lib/site';
 
 export interface Props {
-  title?: string;
-  description?: string;
-  canonical?: string;
-  ogImage?: string;
+  /** Unique page title, max 60 chars, format "Page topic, ScamHelp". */
+  title: string;
+  /** Unique meta description, 140 to 160 chars. */
+  description: string;
+  /** Force noindex (e.g. 404). Staging builds are always noindex. */
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+  /** Extra JSON-LD objects for this page (e.g. Article). */
+  schema?: object[];
 }
 
-const {
-  title = "ScamHelp - Fund Recovery Experts | Get Back What Is Rightfully Yours",
-  description = "ScamHelp helps victims of investment, crypto and romance scams recover their lost funds. Free confidential consultation. 750+ satisfied clients in 60+ countries. Netherlands-based fund recovery experts.",
-  canonical = "https://alexralea.github.io/ScamHelp/",
-  ogImage = "https://alexralea.github.io/ScamHelp/og-image.svg",
-} = Astro.props;
+const { title, description, noindex = false, ogType = 'website', schema = [] } = Astro.props;
 
-const siteUrl = "https://alexralea.github.io/ScamHelp";
+// Canonical / og:url always point to the production domain.
+let path = Astro.url.pathname;
+if (BASE && path.startsWith(BASE)) path = path.slice(BASE.length) || '/';
+if (!path.endsWith('/') && !/\.[a-z0-9]+$/i.test(path)) path += '/';
+const canonical = abs(path);
 
-const schemaOrg = {
+const robots = IS_PRODUCTION && !noindex ? 'index, follow' : 'noindex, nofollow';
+const ogImage = abs('/og-image.png');
+
+const organizationSchema = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${siteUrl}/#organization`,
-      "name": "ScamHelp",
-      "url": siteUrl,
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${siteUrl}/logo.png`
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+31-70-701-3260",
-        "contactType": "customer support",
-        "email": "support@scamhelp.net",
-        "areaServed": "Worldwide",
-        "availableLanguage": ["English", "Dutch", "Italian", "Spanish"]
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Kalvermarkt 53",
-        "addressLocality": "Den Haag",
-        "postalCode": "2511 CB",
-        "addressCountry": "NL"
-      },
-      "sameAs": []
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      "url": siteUrl,
-      "name": "ScamHelp",
-      "publisher": { "@id": `${siteUrl}/#organization` }
-    },
-    {
-      "@type": "Service",
-      "name": "Fund Recovery",
-      "provider": { "@id": `${siteUrl}/#organization` },
-      "description": "Professional fund recovery service for scam victims using strategic legal and financial channels.",
-      "areaServed": "Worldwide"
-    },
-    {
-      "@type": "Service",
-      "name": "Crypto Tracing",
-      "provider": { "@id": `${siteUrl}/#organization` },
-      "description": "Advanced blockchain analytics to trace cryptocurrency transactions and identify fraudulent actors.",
-      "areaServed": "Worldwide"
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": `${siteUrl}/#localbusiness`,
-      "name": "ScamHelp",
-      "description": "Fund recovery company specializing in helping victims of online fraud recover their lost assets.",
-      "url": siteUrl,
-      "telephone": "+31-70-701-3260",
-      "email": "support@scamhelp.net",
-      "image": `${siteUrl}/logo-full.svg`,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Kalvermarkt 53",
-        "addressLocality": "Den Haag",
-        "postalCode": "2511 CB",
-        "addressCountry": "NL"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "52.0784",
-        "longitude": "4.3185"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "19:00"
-      },
-      "priceRange": "$$"
-    }
-  ]
+  "@type": "Organization",
+  "name": "ScamHelp",
+  "legalName": "Transparent Business Solutions B.V.",
+  "url": `${SITE_URL}/`,
+  "logo": `${SITE_URL}/logo-full.svg`,
+  "email": "support@scamhelp.net",
+  "telephone": "+31707013260",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kalvermarkt 53",
+    "postalCode": "2511 CB",
+    "addressLocality": "The Hague",
+    "addressCountry": "NL"
+  },
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "KvK",
+    "value": "78091624"
+  },
+  "sameAs": []
 };
 ---
 
@@ -106,22 +57,60 @@ const schemaOrg = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Google Consent Mode v2: everything except strictly necessary storage is denied by default -->
+    <script is:inline define:vars={{ gtmId: GTM_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+      window.__shGtmId = gtmId;
+      window.__shLoadGtm = function () {
+        if (!gtmId || window.__shGtmLoaded) return;
+        window.__shGtmLoaded = true;
+        dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+        document.head.appendChild(s);
+      };
+      try {
+        var stored = JSON.parse(localStorage.getItem('sh_consent') || 'null');
+        if (stored && stored.v === 1) {
+          gtag('consent', 'update', {
+            analytics_storage: stored.analytics ? 'granted' : 'denied',
+            ad_storage: stored.ads ? 'granted' : 'denied',
+            ad_user_data: stored.ads ? 'granted' : 'denied',
+            ad_personalization: stored.ads ? 'granted' : 'denied'
+          });
+          if (stored.analytics || stored.ads) window.__shLoadGtm();
+        }
+      } catch (e) {}
+    </script>
+
     <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="fund recovery, scam recovery, crypto tracing, investment fraud recovery, scam victims, fraud recovery specialists, chargeback, dispute resolution" />
-    <meta name="author" content="ScamHelp" />
-    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Transparent Business Solutions B.V." />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ScamHelp logo" />
     <meta property="og:site_name" content="ScamHelp" />
     <meta property="og:locale" content="en_US" />
 
@@ -132,19 +121,21 @@ const schemaOrg = {
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/logo_simple.svg`} />
-    <link rel="icon" type="image/png" sizes="32x32" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
-    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}/logo_simple.svg`} />
+    <link rel="icon" type="image/svg+xml" href={url('/logo_simple.svg')} />
+    <link rel="apple-touch-icon" href={url('/logo_simple.svg')} />
 
     <!-- Fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body class="min-h-screen overflow-x-hidden">
     <slot />
+
+    <CookieConsent />
 
     <!-- Global scroll reveal observer -->
     <script>

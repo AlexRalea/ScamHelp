@@ -1,4 +1,5 @@
 ---
+import { BASE as base, url } from '../lib/site';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
@@ -78,7 +79,7 @@ import Footer from '../components/Footer.astro';
       </div>
 
       <div class="mt-16">
-        <a href={import.meta.env.BASE_URL} class="text-[#9ACF84] hover:underline" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;">← Back to Home</a>
+        <a href={url('/')} class="text-[#9ACF84] hover:underline" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;">← Back to Home</a>
       </div>
 
     </article>

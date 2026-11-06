@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import ConsultationSection from '../../components/ConsultationSection.astro';
 import Footer from '../../components/Footer.astro';
 
-const base = import.meta.env.BASE_URL;
+import { BASE as base, url } from '../../lib/site';
 
 const services = [
   {
@@ -70,7 +70,7 @@ const faqs = [
   },
 ];
 
-const siteUrl = "https://alexralea.github.io/ScamHelp";
+const siteUrl = "https://scamhelp.net";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -128,7 +128,6 @@ const serviceSchema = {
 <Layout
   title="Fund Recovery Services — ScamHelp | Recover Lost Funds"
   description="ScamHelp's professional fund recovery services help victims of online fraud, bank scams, and unauthorized transactions recover their lost money. Free consultation available."
-  canonical={`${siteUrl}/services/fund-recovery/`}
 >
   <Navbar />
   <main>

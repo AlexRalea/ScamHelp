@@ -1,8 +1,0 @@
-<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="630" fill="#0a0a0f"/>
-  <circle cx="600" cy="315" r="300" fill="#9ACF84" opacity="0.04"/>
-  <text x="600" y="270" text-anchor="middle" font-family="sans-serif" font-size="72" font-weight="700" fill="#ffffff">ScamHelp</text>
-  <text x="600" y="340" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="400" fill="#9ACF84">Fund Recovery Experts</text>
-  <text x="600" y="400" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="400" fill="rgba(255,255,255,0.4)">Get Back What Is Rightfully Yours</text>
-  <line x1="520" y1="370" x2="680" y2="370" stroke="#9ACF84" stroke-width="2" opacity="0.3"/>
-</svg>

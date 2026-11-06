@@ -1,12 +1,19 @@
 ---
-const base = import.meta.env.BASE_URL;
-const navLinks = [
-  { label: "About us",         href: `${base}/about`    },
-  { label: "Know your rights", href: `${base}/rights`   },
-  { label: "Common Scams",     href: `${base}/scams`    },
-  { label: "Our Partners",     href: `${base}/partners` },
-  { label: "Services",         href: `${base}/services` },
-  { label: "News",             href: `${base}/news`     },
+import { url, SERVICES } from '../lib/site';
+
+type NavLink = { label: string; href: string; children?: { label: string; href: string }[] };
+const navLinks: NavLink[] = [
+  { label: "About us",         href: url('/about/')    },
+  { label: "Know your rights", href: url('/rights/')   },
+  { label: "Common Scams",     href: url('/scams/')    },
+  { label: "Our Partners",     href: url('/partners/') },
+  {
+    label: "Services",
+    href: url('/services/'),
+    children: SERVICES.map((s) => ({ label: s.name, href: url(s.path) })),
+  },
+  { label: "News",             href: url('/news/')     },
+  { label: "Contact Us",       href: url('/contact-us/') },
 ];
 ---
 
@@ -15,8 +22,8 @@ const navLinks = [
     <div class="flex items-center justify-between h-[56px] lg:h-[72px]">
 
       <!-- Logo -->
-      <a href={base} class="btn-scale flex items-center">
-        <img src={`${import.meta.env.BASE_URL}/logo_simple.svg`} alt="ScamHelp" class="w-7 lg:w-auto lg:h-9" />
+      <a href={url('/')} class="btn-scale flex items-center" aria-label="ScamHelp home">
+        <img src={url('/logo_simple.svg')} alt="ScamHelp logo" class="w-7 lg:w-auto lg:h-9" />
       </a>
 
       <!-- Desktop Nav -->
@@ -56,6 +63,7 @@ const navLinks = [
       <div class="hidden lg:block">
         <a
           href="#consultation"
+          data-consult-cta
           class="btn-scale inline-flex items-center px-5 py-2 bg-[#9ACF84] text-[#0a0a0f] rounded-lg hover:bg-[#8BC275] transition-colors duration-200"
           style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600"
         >
@@ -107,6 +115,7 @@ const navLinks = [
       <div class="pt-4">
         <a
           href="#consultation"
+          data-consult-cta
           class="mobile-link block text-center px-5 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-lg"
           style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;box-shadow:0 4px 20px rgba(154,207,132,0.45), 0 2px 8px rgba(0,0,0,0.3)"
         >
@@ -114,18 +123,6 @@ const navLinks = [
         </a>
       </div>
 
-      <!-- Socials -->
-      <div class="flex items-center justify-center gap-3 pt-5">
-        <a href="https://www.facebook.com/TransparentBusinessSolutions" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-10 h-10 rounded-lg border border-white/10 bg-white/[0.02] flex items-center justify-center text-white/40 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 hover:bg-[#9ACF84]/5 transition-all duration-200">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/company/scamhelp/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-lg border border-white/10 bg-white/[0.02] flex items-center justify-center text-white/40 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 hover:bg-[#9ACF84]/5 transition-all duration-200">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="https://www.trustpilot.com/review/scamhelp.net" target="_blank" rel="noopener noreferrer" aria-label="Trustpilot" class="w-10 h-10 rounded-lg border border-white/10 bg-white/[0.02] flex items-center justify-center text-white/40 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 hover:bg-[#9ACF84]/5 transition-all duration-200">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.964l5.214-1.321L19.4 23.4 12 17.964zM24 9.164h-9.184L12 .6 9.184 9.164H0l7.43 5.302-2.815 8.564 7.43-5.302 4.572-3.262L24 9.164z"/></svg>
-        </a>
-      </div>
     </div>
   </div>
 </nav>
@@ -147,6 +144,15 @@ const navLinks = [
     pointer-events: auto;
   }
 </style>
+
+<script is:inline define:vars={{ contactUrl: url('/contact-us/#consultation') }}>
+  // "Free Consultation" goes to the form anchor; pages without a form use the Contact page form.
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!document.getElementById('consultation')) {
+      document.querySelectorAll('[data-consult-cta]').forEach(function (a) { a.setAttribute('href', contactUrl); });
+    }
+  });
+</script>
 
 <script>
   // Scroll detection

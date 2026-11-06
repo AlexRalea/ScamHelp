@@ -1,13 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
-const base = import.meta.env.BASE_URL;
+import { BASE as base, url } from '../lib/site';
 ---
 
 <Layout
-  title="Page Not Found — ScamHelp"
-  description="The page you're looking for doesn't exist. Return to ScamHelp homepage."
+  title="Page Not Found, ScamHelp"
+  description="The page you are looking for does not exist or has been moved. Return to the ScamHelp homepage or contact us for a free, confidential case assessment."
+  noindex
 >
   <Navbar />
   <main class="bg-[#0a0a0f] min-h-screen flex items-center justify-center px-6">
@@ -23,7 +25,7 @@ const base = import.meta.env.BASE_URL;
       </p>
       <div class="flex items-center justify-center gap-4 mt-8 flex-wrap">
         <a
-          href={base}
+          href={url('/')}
           class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors"
           style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;"
         >
@@ -31,7 +33,7 @@ const base = import.meta.env.BASE_URL;
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
         <a
-          href={`${base}/contact-us`}
+          href={url('/contact-us/')}
           class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/10 text-white/60 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 transition-all"
           style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;"
         >
@@ -41,4 +43,5 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
   </main>
+  <Footer />
 </Layout>

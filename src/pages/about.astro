@@ -5,9 +5,9 @@ import ContactForm from '../components/ContactForm.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
 import Footer from '../components/Footer.astro';
 
-const base = import.meta.env.BASE_URL;
+import { BASE as base, url } from '../lib/site';
 
-const siteUrl = "https://alexralea.github.io/ScamHelp";
+const siteUrl = "https://scamhelp.net";
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -60,7 +60,7 @@ const helpCards = [
 ];
 ---
 
-<Layout title="About Us — ScamHelp" description="Scam Help is a funds recovery company based in the Netherlands. Our dedicated team of IT forensic analysts, anti-fraud specialists, and case coordinators help victims recover lost assets." canonical="https://alexralea.github.io/ScamHelp/about/">
+<Layout title="About Us — ScamHelp" description="Scam Help is a funds recovery company based in the Netherlands. Our dedicated team of IT forensic analysts, anti-fraud specialists, and case coordinators help victims recover lost assets.">
   <Navbar />
   <main class="bg-[#0a0a0f]">
 

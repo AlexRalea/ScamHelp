@@ -1,0 +1,12 @@
+---
+// Highlighted text block, e.g. "What you receive: ..." or "Fees: ...".
+// Usage: <InfoBlock label="What you receive">text</InfoBlock>
+export interface Props { label?: string; class?: string }
+const { label, class: className = '' } = Astro.props;
+---
+<div class={`info-block max-w-3xl mx-auto rounded-xl border border-[#9ACF84]/20 bg-[#9ACF84]/[0.04] px-5 py-4 ${className}`}>
+  <p class="text-white/70" style="font-size:14px;line-height:1.75">
+    {label && <strong class="text-[#9ACF84]" style="font-family:'Montserrat',sans-serif;font-weight:600">{label}: </strong>}
+    <slot />
+  </p>
+</div>

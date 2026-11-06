@@ -1,0 +1,10 @@
+---
+// The approved "outcomes sentence". Insert wherever the instructions say
+// "Add the outcomes sentence".
+import { OUTCOMES_SENTENCE } from '../lib/site';
+export interface Props { class?: string }
+const { class: className = '' } = Astro.props;
+---
+<p class={`outcomes-note max-w-3xl mx-auto text-white/45 ${className}`} style="font-size:13px;line-height:1.7">
+  {OUTCOMES_SENTENCE}
+</p>

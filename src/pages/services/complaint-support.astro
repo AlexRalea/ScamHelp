@@ -4,8 +4,8 @@ import Navbar from '../../components/Navbar.astro';
 import ConsultationSection from '../../components/ConsultationSection.astro';
 import Footer from '../../components/Footer.astro';
 
-const base = import.meta.env.BASE_URL;
-const siteUrl = "https://alexralea.github.io/ScamHelp";
+import { BASE as base, url } from '../../lib/site';
+const siteUrl = "https://scamhelp.net";
 
 const services = [
   {
@@ -83,7 +83,6 @@ const serviceSchema = {
 <Layout
   title="Dispute Resolution Services — ScamHelp | Expert Mediation & Recovery"
   description="ScamHelp offers certified dispute resolution services including expert mediation, negotiation support, and legal representation for fraud victims. Free consultation."
-  canonical={`${siteUrl}/services/dispute-resolution/`}
 >
   <Navbar />
   <main class="bg-[#0a0a0f]">
