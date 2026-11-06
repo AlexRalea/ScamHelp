@@ -3,6 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import ConsultationSection from '../../components/ConsultationSection.astro';
 import Footer from '../../components/Footer.astro';
+import InfoBlock from '../../components/InfoBlock.astro';
+import OutcomesNote from '../../components/OutcomesNote.astro';
 
 import { BASE as base, url } from '../../lib/site';
 
@@ -15,18 +17,18 @@ const services = [
     icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
   },
   {
-    title: "Asset Recovery",
-    description: "Our team leverages specialized skills and industry partnerships for recovering lost or stolen cryptocurrency assets, working alongside legal professionals and law enforcement agencies to maximize your chances of recovery.",
-    icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    title: "Investigation report",
+    description: "A written report documenting the fraud, the flow of funds, and the wallets and exchanges involved.",
+    icon: "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
   },
   {
-    title: "Regulatory Work Assessment",
-    description: "We help you navigate the complex regulatory landscape surrounding cryptocurrency by providing detailed compliance reports, liaising with financial regulators, and ensuring all investigation procedures adhere to current legal frameworks.",
+    title: "Complaints to regulators",
+    description: "With your approval, we prepare complaints and supporting evidence for financial regulators and ombudsman services.",
     icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3",
   },
   {
-    title: "Prevention and Education",
-    description: "ScamHelp offers comprehensive education and training programs designed to help individuals and organizations recognize cryptocurrency threats, understand common fraud tactics, and implement best practices for protecting their digital assets.",
+    title: "Prevention guidance",
+    description: "Practical guidance to help you recognise crypto fraud tactics and protect your assets in future.",
     icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
   },
 ];
@@ -34,7 +36,7 @@ const services = [
 const faqs = [
   {
     q: "What are crypto investigation services?",
-    a: "Crypto investigation services specialize in tracking, analyzing, and tracing cryptocurrency transactions on the blockchain. These services help identify fraudulent activities, recover lost or stolen digital assets, and provide detailed forensic reports that can be used for legal proceedings or regulatory compliance."
+    a: "Crypto investigation services specialize in tracking, analyzing, and tracing cryptocurrency transactions on the blockchain. These services help identify fraudulent activities and provide detailed forensic reports that can support complaints, police reports and legal proceedings."
   },
   {
     q: "How do crypto investigation services work?",
@@ -46,11 +48,11 @@ const faqs = [
   },
   {
     q: "Are cryptocurrency investigation services legal?",
-    a: "Yes, cryptocurrency investigation services are entirely legal. Our operations work within established legal frameworks, and we frequently collaborate with law enforcement agencies and regulatory bodies. All investigations are conducted in compliance with applicable laws, and our forensic reports are designed to be admissible as evidence in legal proceedings."
+    a: "Yes. Blockchain data is public, and investigation of it is widely used by law enforcement, regulators and private investigators. ScamHelp operates under a Dutch private investigation licence, and all investigations are conducted in compliance with applicable laws."
   },
   {
     q: "How long does a blockchain investigation typically take?",
-    a: "The duration of a blockchain investigation varies depending on the complexity of the case. Simple transaction tracing may take a few days, while more complex investigations involving multiple wallets, cross-chain transactions, or mixing services can take significantly longer. On average, most investigations are completed within 60 days."
+    a: "The duration of a blockchain investigation varies depending on the complexity of the case. Simple transaction tracing may take a few days, while more complex investigations involving multiple wallets, cross-chain transactions, or mixing services can take significantly longer. We deliver the investigation report within 60 days of signing; if a complex case needs more time, we tell you and set a new deadline."
   },
 ];
 
@@ -75,19 +77,19 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": siteUrl
+      "item": `${siteUrl}/`
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Services",
-      "item": `${siteUrl}/services`
+      "item": `${siteUrl}/services/`
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Crypto Investigation",
-      "item": `${siteUrl}/services/crypto-investigation`
+      "name": "Crypto Fraud Investigation",
+      "item": `${siteUrl}/services/crypto-fraud-investigation/`
     }
   ]
 };
@@ -95,21 +97,21 @@ const breadcrumbSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Cryptocurrency Investigation",
+  "name": "Crypto Fraud Investigation",
   "provider": {
     "@type": "Organization",
     "name": "ScamHelp",
     "url": siteUrl
   },
-  "description": "Professional cryptocurrency investigation services using advanced blockchain forensics to uncover fraudulent activities and recover stolen digital assets.",
+  "description": "ScamHelp investigates cryptocurrency fraud with blockchain forensics and delivers a written report you can use with your bank, exchange, lawyer or the police.",
   "areaServed": "Worldwide",
   "serviceType": "Blockchain Forensic Investigation"
 };
 ---
 
 <Layout
-  title="Crypto Investigation Services — ScamHelp | Blockchain Forensics"
-  description="ScamHelp's cryptocurrency investigation services uncover fraudulent activities using advanced blockchain forensics. Expert analysis, asset recovery. Free consultation."
+  title="Crypto Fraud Investigation, ScamHelp"
+  description="ScamHelp investigates cryptocurrency fraud with blockchain forensics and delivers a written report you can use with your bank, exchange, lawyer or the police."
 >
   <Navbar />
 
@@ -125,12 +127,12 @@ const serviceSchema = {
     ═══════════════════════════════════════════ -->
     <section class="px-6 text-center" style="padding-top:10rem;padding-bottom:5rem;">
       <div class="max-w-3xl mx-auto">
-        <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Crypto Investigation</span>
+        <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Crypto Fraud Investigation</span>
         <h1 class="text-white mb-5 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:700;line-height:1.1">
-          Expert &amp; Legitimate <span class="text-[#9ACF84]">Crypto Investigation</span>
+          Crypto <span class="text-[#9ACF84]">Fraud Investigation</span>
         </h1>
         <p class="text-white/40 max-w-xl mx-auto reveal" style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7">
-          Our certified forensic analysts use advanced blockchain tools to trace, investigate, and help recover your stolen or lost cryptocurrency assets.
+          Our investigators use professional blockchain tools to investigate cryptocurrency fraud and produce a written report you can use with your bank, exchange, lawyer or the police.
         </p>
       </div>
     </section>
@@ -181,10 +183,10 @@ const serviceSchema = {
         <div>
           <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-4 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">About</span>
           <h2 class="text-white mb-6" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-            About Scam <span class="text-[#9ACF84]">Help</span>
+            About <span class="text-[#9ACF84]">ScamHelp</span>
           </h2>
           <p class="text-white/45 mb-5" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            ScamHelp is the leading blockchain investigation agency, providing expert cryptocurrency forensic services to individuals, businesses, and law enforcement agencies worldwide. Our team of certified analysts combines deep technical expertise with an unwavering commitment to recovering stolen digital assets and bringing fraudsters to justice.
+            ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private investigation agency based in The Hague and licensed by the Dutch Ministry of Justice and Security (licence POB 07373, KvK 78091624). Our investigators handle cryptocurrency fraud cases for individuals and businesses.
           </p>
 
           <h3 class="text-white/70 mb-4" style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:600">
@@ -195,7 +197,7 @@ const serviceSchema = {
             <li class="flex items-start gap-3">
               <svg class="w-5 h-5 text-[#9ACF84] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               <span class="text-white/45" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">
-                <strong class="text-white/70">Immediate Support</strong> &mdash; Our team is available to begin your investigation immediately. We understand the urgency and work around the clock to trace your assets before they can be further laundered.
+                <strong class="text-white/70">Immediate Support</strong> &mdash; We start work promptly once the agreement is signed. Acting quickly matters, because funds can move on fast.
               </span>
             </li>
             <li class="flex items-start gap-3">
@@ -207,10 +209,10 @@ const serviceSchema = {
           </ul>
 
           <p class="text-white/45 mb-8" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            Whether you've been a victim of a rug pull, exchange hack, phishing attack, or investment scam, our experts have the tools and experience to investigate your case and provide actionable results.
+            Whether you've been a victim of a rug pull, exchange hack, phishing attack, or investment scam, our experts have the tools and experience to investigate your case and provide a clear, documented report.
           </p>
 
-          <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+          <a href={url('/contact-us/')} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
             Start Your Investigation
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -218,7 +220,7 @@ const serviceSchema = {
 
         <!-- Image -->
         <div class="reveal from-right rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden" style="aspect-ratio: 1200 / 792;">
-          <img src={`${base}/who_we_are_image.webp`} alt="ScamHelp crypto investigation experts" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/who_we_are_image.webp`} alt="" class="w-full h-full object-cover" loading="lazy" />
         </div>
 
       </div>
@@ -235,7 +237,7 @@ const serviceSchema = {
 
         <!-- Image -->
         <div class="reveal rounded-2xl border border-[#e8e8e8] bg-[#f8f8f8] overflow-hidden" style="aspect-ratio: 1200 / 788;">
-          <img src={`${base}/why_us_image.webp`} alt="How ScamHelp crypto investigations help" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/why_us_image.webp`} alt="" class="w-full h-full object-cover" loading="lazy" />
         </div>
 
         <!-- Text -->
@@ -244,10 +246,10 @@ const serviceSchema = {
             How Can Our Cryptocurrency <span class="text-[#9ACF84]">Investigations</span> Help?
           </h2>
           <p class="text-[#0a0a0f]/50 mb-5" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            Cryptocurrency fraud is a rapidly growing threat. From sophisticated phishing schemes and Ponzi structures to rug pulls and exchange manipulations, criminals are constantly evolving their tactics. Without expert blockchain forensics, recovering stolen digital assets can feel impossible.
+            Cryptocurrency fraud is a rapidly growing threat. From sophisticated phishing schemes and Ponzi structures to rug pulls and exchange manipulations, criminals are constantly evolving their tactics.
           </p>
           <p class="text-[#0a0a0f]/50 mb-6" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            Our cryptocurrency investigations provide the technical clarity and legal-grade evidence needed to pursue recovery through exchanges, law enforcement, and the judicial system. Here is what we bring to the table:
+            Our investigations give you a documented account of where your funds went, which you can use in complaints to exchanges and reports to the police, and which your lawyer can use if legal action is taken. What we provide:
           </p>
 
           <ul class="space-y-3 mb-8">
@@ -260,7 +262,7 @@ const serviceSchema = {
             <li class="flex items-start gap-3">
               <svg class="w-5 h-5 text-[#9ACF84] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               <span class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">
-                <strong class="text-[#0a0a0f]/80">Expert Analysis</strong> &mdash; Our certified forensic analysts produce detailed, court-admissible reports that identify perpetrators and support legal action.
+                <strong class="text-[#0a0a0f]/80">Expert Analysis</strong> &mdash; Our analysts produce detailed reports that document the flow of funds and the wallets and exchanges involved.
               </span>
             </li>
             <li class="flex items-start gap-3">
@@ -271,7 +273,14 @@ const serviceSchema = {
             </li>
           </ul>
 
-          <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+          <!-- What you receive / Fees / Outcomes (dark-styled components, recoloured for the white section) -->
+          <div class="space-y-4 mb-8 [&_.info-block>p]:text-[#0a0a0f]/70 [&_.outcomes-note]:text-[#0a0a0f]/50">
+            <InfoBlock label="What you receive">a written investigation report delivered within 60 days of signing, documenting how the fraud worked, where the funds went and which exchanges and wallets were involved.</InfoBlock>
+            <InfoBlock label="Fees">Investigation fees start from €1,500; custom complex investigations start from €15,000. Fees are agreed in writing before any work begins. See <a href={url('/fees/')} class="text-[#6BA055] underline underline-offset-2 hover:text-[#9ACF84] transition-colors">Our Fees</a>.</InfoBlock>
+            <OutcomesNote />
+          </div>
+
+          <a href="#consultation" class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
             Get a Free Consultation
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -287,12 +296,12 @@ const serviceSchema = {
     <section class="py-12 md:py-16 px-6">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-white mb-5 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-          Protect your investments with our <span class="text-[#9ACF84]">cryptocurrency investigations</span>
+          Have you lost <span class="text-[#9ACF84]">cryptocurrency</span> to fraud?
         </h2>
         <p class="text-white/40 mb-8 max-w-2xl mx-auto" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-          Don't let cryptocurrency fraud go uninvestigated. Our expert team is ready to analyze your case, trace your stolen assets, and provide the evidence you need to take action. The sooner you act, the higher the chances of recovery.
+          Contact us for a free, confidential consultation. Acting quickly matters, because funds can move on fast, so get in touch as soon as you can.
         </p>
-        <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+        <a href={url('/contact-us/')} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
           Contact Us Today
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -316,9 +325,9 @@ const serviceSchema = {
               Frequently Asked <span class="text-[#9ACF84]">Questions</span>
             </h2>
             <p class="text-[#0a0a0f]/50 mb-8" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.75">
-              Can't find the answer you're looking for? Reach out to our team and we'll get back to you within 24 hours.
+              Can't find the answer you're looking for? Reach out to our team and we'll reply within 48 hours.
             </p>
-            <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#0a0a0f]/10 text-[#0a0a0f]/60 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 transition-all" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+            <a href={url('/contact-us/')} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#0a0a0f]/10 text-[#0a0a0f]/60 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 transition-all" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
               Contact Us
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>

@@ -9,15 +9,15 @@ import { BASE as base, url } from '../lib/site';
 const partners = [
   {
     name: "Scam Detector",
-    subtitle: "World's largest fraud prevention resource",
-    description: "Scam Detector is a platform that exposes the world's most notorious scams and offers a website validator tool for consumers to verify any website they are about to engage with. Scam Detector has been featured on ABC, BBC, CBS, FOX, Cnet and all the major media out there.",
+    subtitle: "Referral partner",
+    description: "Fraud prevention resource with a website validator tool that helps consumers check a site before using it.",
     url: "https://www.scam-detector.com/",
     image: "scam-detector-partner.png",
   },
   {
     name: "AmCham",
-    subtitle: "American Chamber of Commerce in The Netherlands",
-    description: "Ever since 1961, the AmCham or American Chamber of Commerce in Netherlands has been the spokesperson for American businesses in the country. US-based firms employ around 450,000 people, responsible for almost 12% of Netherlands' entire annual revenue.",
+    subtitle: "Member of AmCham Netherlands",
+    description: "Transparent Business Solutions B.V. is a member of the American Chamber of Commerce in the Netherlands, the business association for American companies in the country.",
     url: "https://www.amcham.nl/",
     image: "amcham-partner.png",
   },
@@ -36,13 +36,6 @@ const partners = [
     image: "pacific-risk-partner.png",
   },
   {
-    name: "Leon Hill",
-    subtitle: "In-House Legal Counsel, JD",
-    description: "Leon's professional experience includes managing a forced labor data and intelligence project for a global NGO combatting human trafficking by applying anti-money-laundering regulations. He has directed IP anti-piracy investigations with infringement enforcement response.",
-    url: "https://apps.calbar.ca.gov/attorney/Licensee/Detail/123140",
-    image: "leon-hill-partner.png",
-  },
-  {
     name: "Mark Solomons",
     subtitle: "Private Investigator, Award-Winning Journalist",
     description: "Mark Solomons is an experienced criminal investigator specialising in complex fraud and cybercrime cases. A former award-winning investigative journalist and Financial Times reporter, Mark is an expert on cryptocurrency and investment fraud.",
@@ -51,20 +44,30 @@ const partners = [
   },
 ];
 
+const team = [
+  {
+    name: "Leon Hill",
+    subtitle: "In-House Legal Counsel, JD",
+    description: "Leon's professional experience includes managing a forced labor data and intelligence project for a global NGO combatting human trafficking by applying anti-money-laundering regulations. He has directed IP anti-piracy investigations with infringement enforcement response. Leon advises ScamHelp internally and does not act as legal representative for clients.",
+    url: "https://apps.calbar.ca.gov/attorney/Licensee/Detail/123140",
+    image: "leon-hill-partner.png",
+  },
+];
+
 const whyHelpCards = [
   {
-    title: "Banking Rights & Regulations",
-    description: "The majority of consumers are not aware of their rights and banking laws in place. Scam Help has all the resources and necessary experience to navigate the banking system and present your case in the most professional way.",
+    title: "Banking rights and rules",
+    description: "Many consumers don't know which dispute and complaint options their bank or card issuer offers. We explain which options apply to your case and help you use them correctly.",
     icon: `<svg class="w-6 h-6 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/></svg>`,
   },
   {
-    title: "One Chance to Dispute",
-    description: "Banking rules provide consumers with only one shot to raise a dispute against the fraudulent merchant, therefore the dispute has to be well formulated in aligned with the local and international law.",
+    title: "Strict rules and deadlines",
+    description: "Chargebacks, recalls and complaints have strict deadlines and evidence requirements. A dispute that is incomplete or late may be rejected, so it needs to be prepared carefully.",
     icon: `<svg class="w-6 h-6 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
   },
   {
-    title: "Solid Arguments Required",
-    description: "Big companies have the system to combat disputes and often fall victims to 'chargeback fraud'. They do their best to protect their own assets, therefore you need to provide the most solid arguments to justify your dispute.",
+    title: "Clear evidence required",
+    description: "Banks and merchants review disputes against documented evidence. We help you collect and present transaction records, correspondence and tracing results in a clear format.",
     icon: `<svg class="w-6 h-6 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
   },
 ];
@@ -85,15 +88,15 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "Our Partners",
-      "item": `${siteUrl}/partners`,
+      "item": `${siteUrl}/partners/`,
     },
   ],
 };
 ---
 
 <Layout
-  title="Our Partners — ScamHelp | Trusted Recovery Network"
-  description="Meet ScamHelp's trusted partners including leading fraud investigators, legal experts, and compliance specialists. Together we fight financial fraud across 60+ countries."
+  title="Our Partners and Team, ScamHelp"
+  description="The independent investigators and specialists ScamHelp works with on fraud cases, and the people behind our work."
 >
   <Navbar />
   <main class="bg-[#0a0a0f]">
@@ -110,10 +113,10 @@ const breadcrumbSchema = {
       <div class="max-w-3xl mx-auto relative z-[1]">
         <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Our Partners</span>
         <h1 class="text-white mb-5 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:700;line-height:1.1">
-          Our <span class="text-[#9ACF84]">Partners</span>
+          Our <span class="text-[#9ACF84]">Partners</span> and <span class="text-[#9ACF84]">Team</span>
         </h1>
         <p class="text-white/40 max-w-xl mx-auto reveal" style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7">
-          Our professionalism is built on a foundation of deep expertise and strong partnerships with industry-leading specialists across the globe.
+          We work with independent investigators and specialists on cases that need their expertise.
         </p>
       </div>
     </section>
@@ -128,10 +131,10 @@ const breadcrumbSchema = {
           Our team & <span class="text-[#9ACF84]">partners</span>
         </h2>
         <p class="text-[#0a0a0f]/60 mb-10 reveal" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-          Our professionalism is based on the team's knowledge and experience in presenting cases of various complexity in front of banks, credit unions, financial institutions, payment processors, and credit card and debit card companies. We work hard to ensure the fraudulent charges you have experienced have the highest chance for a successful recovery.
+          Our team has experience presenting cases to banks, credit unions, payment processors and card issuers. For cases that need specialist expertise in forensic accounting, anti-money-laundering or cybercrime, we work with the independent investigators and specialists below.
         </p>
         <div class="reveal">
-          <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+          <a href={url('/contact-us/')} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
             Contact Us
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -160,6 +163,34 @@ const breadcrumbSchema = {
               <p class="text-[#9ACF84] mb-3" style="font-family:'Inter',sans-serif;font-size:12px">{partner.subtitle}</p>
               <p class="text-[#0a0a0f]/50 mb-4" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">{partner.description}</p>
               <a href={partner.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-[#9ACF84] hover:text-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600">
+                Visit Website
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Team (white) -->
+    <section class="py-12 md:py-14 px-6 bg-white relative overflow-hidden border-t border-[#e8e8e8]">
+      <div class="relative z-10 max-w-7xl mx-auto">
+        <div class="text-center mb-10 reveal">
+          <h2 class="text-[#0a0a0f] mb-4" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
+            Our <span class="text-[#9ACF84]">team</span>
+          </h2>
+        </div>
+
+        <div class="max-w-md mx-auto">
+          {team.map((member, i) => (
+            <div class={`reveal delay-${(i % 6) + 1} group p-7 rounded-2xl border border-[#e8e8e8] bg-white hover:border-[#9ACF84]/30 hover:shadow-lg transition-all duration-300`}>
+              <div class="w-full h-28 rounded-xl bg-[#f8f8f8] border border-[#e8e8e8] flex items-center justify-center mb-5 overflow-hidden p-4">
+                <img src={`${base}/partners/${member.image}`} alt={member.name} class="max-h-full max-w-full object-contain" loading="lazy" />
+              </div>
+              <h3 class="text-[#0a0a0f] mb-1" style="font-family:'Montserrat',sans-serif;font-size:16px;font-weight:600">{member.name}</h3>
+              <p class="text-[#9ACF84] mb-3" style="font-family:'Inter',sans-serif;font-size:12px">{member.subtitle}</p>
+              <p class="text-[#0a0a0f]/50 mb-4" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">{member.description}</p>
+              <a href={member.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-[#9ACF84] hover:text-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600">
                 Visit Website
                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>

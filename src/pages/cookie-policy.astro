@@ -1,43 +1,102 @@
 ---
-import { BASE as base, url } from '../lib/site';
+import { url } from '../lib/site';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
 import Footer from '../components/Footer.astro';
+
+const cookies = [
+  {
+    name: 'sh_consent',
+    provider: 'ScamHelp',
+    purpose: 'Stores your cookie choice so it can be respected on every page. Kept in your browser\'s local storage, not as a cookie.',
+    duration: 'Until you clear it or change your choice',
+    category: 'Strictly necessary',
+  },
+  {
+    name: '_ga',
+    provider: 'Google Analytics (via Google Tag Manager)',
+    purpose: 'Distinguishes visitors.',
+    duration: '2 years',
+    category: 'Analytics (only with consent)',
+  },
+  {
+    name: '_ga_<container-id>',
+    provider: 'Google Analytics (via Google Tag Manager)',
+    purpose: 'Keeps session state.',
+    duration: '2 years',
+    category: 'Analytics (only with consent)',
+  },
+  {
+    name: '_gcl_au',
+    provider: 'Google Ads (via Google Tag Manager)',
+    purpose: 'Measures ad conversions.',
+    duration: '90 days',
+    category: 'Advertising (only with consent)',
+  },
+];
 ---
 
-<Layout title="Cookie Policy — ScamHelp" description="This Cookie Policy explains what cookies are and how we use them, the types of cookies we use, the information we collect using cookies and how that information is used.">
+<Layout title="Cookie Policy, ScamHelp" description="Which cookies the ScamHelp website uses, why, and how to manage your consent.">
   <Navbar />
   <main class="min-h-screen bg-[#0a0a0f] pt-32 pb-20 px-6">
     <article class="max-w-3xl mx-auto">
 
       <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Legal</span>
-      <h1 class="text-white mb-12" style="font-family:'Montserrat',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.15">Cookie <span class="text-[#9ACF84]">Policy</span></h1>
+      <h1 class="text-white mb-4" style="font-family:'Montserrat',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.15">Cookie <span class="text-[#9ACF84]">Policy</span></h1>
+      <p class="text-white/40 mb-12" style="font-family:'Inter',sans-serif;font-size:13px">Last updated: November 2026</p>
 
       <div class="legal-content">
 
         <h2>About this cookie policy</h2>
-        <p>This Cookie Policy explains what cookies are and how we use them, the types of cookies we use i.e, the information we collect using cookies and how that information is used, and how to control the cookie preferences. For further information on how we use, store, and keep your personal data secure, see our Privacy Policy.</p>
-        <p>You can at any time change or withdraw your consent from the Cookie Declaration on our website. Learn more about who we are, how you can contact us, and how we process personal data in our Privacy Policy.</p>
-        <p>Your consent applies to the following domains: www.scamhelp.net</p>
+        <p>This Cookie Policy explains which cookies and similar technologies the ScamHelp website (scamhelp.net) uses, why we use them, and how you can manage your consent. ScamHelp is a registered trade name of Transparent Business Solutions B.V., which is the data controller for personal data collected through the website. For more on how we process personal data, see our <a href={url('/privacy-policy/')}>Privacy Policy</a>.</p>
 
         <h2>What are cookies?</h2>
-        <p>Cookies are small text files that are used to store small pieces of information. They are stored on your device when the website is loaded on your browser. These cookies help us make the website function properly, make it more secure, provide better user experience, and understand how the website performs and to analyze what works and where it needs improvement.</p>
+        <p>Cookies are small text files that a website stores on your device when you visit it. Similar technologies, such as your browser's local storage, work in a comparable way. Cookies can be set by the website itself or by a third-party service used on the website.</p>
 
-        <h2>How do we use cookies?</h2>
-        <p>As most of the online services, our website uses first-party and third-party cookies for several purposes. First-party cookies are mostly necessary for the website to function the right way, and they do not collect any of your personally identifiable data.</p>
-        <p>The third-party cookies used on our website are mainly for understanding how the website performs, how you interact with our website, keeping our services secure, providing advertisements that are relevant to you, and all in all providing you with a better and improved user experience and help speed up your future interactions with our website.</p>
+        <h2>How we use cookies</h2>
+        <p><strong>Strictly necessary:</strong> we store your consent choice in your browser's local storage under the key <code>sh_consent</code>, so that we can respect it on every page. This is not a cookie, and it is kept until you clear it or change your choice. No other strictly necessary cookies are set by the website.</p>
+        <p><strong>Analytics (only with your consent):</strong> Google Analytics, loaded through Google Tag Manager, helps us understand how visitors use the website.</p>
+        <p><strong>Advertising (only with your consent):</strong> Google Ads, loaded through Google Tag Manager, measures ad conversions.</p>
 
-        <h2>What types of cookies do we use?</h2>
-        <p><strong>Essential:</strong> Some cookies are essential for you to be able to experience the full functionality of our site. They allow us to maintain user sessions and prevent any security threats. They do not collect or store any personal information. For example, these cookies allow you to log-in to your account and add products to your basket, and checkout securely.</p>
-        <p><strong>Statistics:</strong> These cookies store information like the number of visitors to the website, the number of unique visitors, which pages of the website have been visited, the source of the visit, etc. These data help us understand and analyze how well the website performs and where it needs improvement.</p>
-        <p><strong>Marketing:</strong> Our website displays advertisements. These cookies are used to personalize the advertisements that we show to you so that they are meaningful to you. These cookies also help us keep track of the efficiency of these ad campaigns. The information stored in these cookies may also be used by the third-party ad providers to show you ads on other websites on the browser as well.</p>
-        <p><strong>Functional:</strong> These are the cookies that help certain non-essential functionalities on our website. These functionalities include embedding content like videos or sharing content of the website on social media platforms.</p>
-        <p><strong>Preferences:</strong> These cookies help us store your settings and browsing preferences like language preferences so that you have a better and efficient experience on future visits to the website.</p>
+        <h2>Google Consent Mode v2</h2>
+        <p>We use Google Consent Mode v2. Until you accept, analytics and advertising storage is denied and Google Tag Manager is not loaded, so no analytics or advertising cookies are set. If you accept only one of these categories, the other remains denied.</p>
 
-        <h2>How can I control the cookie preferences?</h2>
-        <p>Should you decide to change your preferences later through your browsing session, you can click on the "Privacy & Cookie Policy" tab on your screen. This will display the consent notice again enabling you to change your preferences or withdraw your consent entirely.</p>
-        <p>In addition to this, different browsers provide different methods to block and delete cookies used by websites. You can change the settings of your browser to block/delete the cookies. To find out more about how to manage and delete cookies, visit wikipedia.org, www.allaboutcookies.org.</p>
+        <h2>Cookies we use</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Provider</th>
+                <th scope="col">Purpose</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cookies.map((c) => (
+                <tr>
+                  <td><code>{c.name}</code></td>
+                  <td>{c.provider}</td>
+                  <td>{c.purpose}</td>
+                  <td>{c.duration}</td>
+                  <td>{c.category}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>How to manage your consent</h2>
+        <p>You can change or withdraw your consent at any time via "Cookie settings" at the bottom of every page, or here: <button type="button" data-cookie-settings class="cookie-settings-link">Cookie settings</button>. Withdrawing your consent does not affect what happened before you withdrew it.</p>
+        <p>You can also block cookies in your browser, although some parts of the website may then not work properly. Most browsers also let you delete cookies that are already stored on your device.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>We may update this Cookie Policy, for example when we add or remove cookies. The date of the last update is shown at the top of this page.</p>
+
+        <h2>Contact</h2>
+        <p>The data controller is Transparent Business Solutions B.V. (ScamHelp), Kalvermarkt 53, 2511 CB The Hague, Netherlands. For questions about this Cookie Policy, email <a href="mailto:support@scamhelp.net">support@scamhelp.net</a>. Our <a href={url('/privacy-policy/')}>Privacy Policy</a> explains how we process personal data and how you can exercise your rights.</p>
 
       </div>
 
@@ -80,15 +139,58 @@ import Footer from '../components/Footer.astro';
     color: rgba(255,255,255,0.5);
     margin-bottom: 0.5rem;
   }
-  .legal-content a {
+  .legal-content a,
+  .legal-content .cookie-settings-link {
     color: #9ACF84;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .legal-content a:hover {
+  .legal-content a:hover,
+  .legal-content .cookie-settings-link:hover {
     color: #b5e0a0;
+  }
+  .legal-content .cookie-settings-link {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
   }
   .legal-content strong {
     color: rgba(255,255,255,0.7);
+  }
+  .legal-content code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+  }
+  .legal-content .table-wrap {
+    overflow-x: auto;
+    margin: 1rem 0 1.5rem;
+  }
+  .legal-content table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+  }
+  .legal-content th {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    text-align: left;
+    vertical-align: bottom;
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .legal-content td {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.4);
+    vertical-align: top;
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 </style>

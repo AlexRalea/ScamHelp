@@ -16,93 +16,113 @@ const breadcrumbSchema = {
   ],
 };
 
+// Shown under every card (01 to 08).
+const whatToDoNow = "stop all payments; contact your bank or card issuer immediately; report the scam to the police and your national fraud reporting centre; keep all records, including transaction IDs, wallet addresses, screenshots and messages.";
+
 const scams = [
   {
     title: "Forex",
     highlight: "scams",
-    slug: "forex",
     image: "scam-images/forex_scams_image.webp",
+    alt: "Candlestick price chart on a dark background",
     paragraphs: [
-      "The forex market (FX) is the world's largest trading market. Nearly $5 trillion are traded daily. The market opens 24 hours a day. When trading closes in New York it starts again in Tokyo and Hong Kong. Since there are constant price fluctuations, this market can make institutions, companies and individuals a lot of money.",
-      "Forex fraud is a growing problem and there is no guaranteed way to avoid it. People under 25 are falling in droves due to the lavish payouts promised. Until recently, older people (those over 50 and in retirement) were considered to be the most vulnerable target. All that, is apparently a trend in the past. Those who currently make up the over 55 age group category have grown somewhat immune to the tricks of the online scammers, the young adult category has become the preferred target now.",
+      "The foreign exchange (forex) market is the world's largest financial market, open around the clock on weekdays. Its size and constant price movements make it attractive to fraudsters, who set up unregulated brokers and trading platforms promising high or guaranteed returns. Typical forex fraud shows fake profits on screen, encourages ever larger deposits, and then blocks withdrawals or demands extra fees.",
     ],
+    warning: "the broker is not registered with a financial regulator in your country; you are promised fixed or guaranteed returns; an \"account manager\" pressures you to deposit more; withdrawals are refused unless you pay fees or taxes first.",
     iconPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
     number: "01",
   },
   {
     title: "Binary option",
     highlight: "scams",
-    slug: "binary-option",
     image: "scam-images/binary_options_scam_image.webp",
+    alt: "Laptop showing a price chart with up and down trade buttons",
     paragraphs: [
       "Scams are extremely common in the field of binary options. When new financial instruments or forms of trading emerge, a whole range of businesses tend to get involved and some of those product providers are more trustworthy than others. This is certainly true of binary options, these platforms tend to operate under the radar.",
       "A binary option is a type of options contract where the payout depends entirely on the outcome of a yes/no proposition, typically related to the price of a particular asset such as a stock or a commodity. With binary options you don't actually buy stock or commodities you just bet on its price within a certain time period. Some binary options are listed on registered exchanges or traded on a designated contract market and are subject to oversight by U.S. regulators such as the Commodity Futures Trading Commission (CFTC), however a large part of the binary options market operates through websites that don't comply with U.S. regulations or any Financial Regulatory Authorities.",
+      "In the EU, selling binary options to retail clients has been prohibited since 2018, so a platform offering them to EU consumers is a warning sign in itself.",
     ],
+    warning: "the platform is based offshore or names no regulator; trades always seem to lose at the last moment; bonuses come with conditions that block withdrawals; you cannot reach anyone once you ask for your money back.",
     iconPath: "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
     number: "02",
   },
   {
     title: "Cryptocurrency",
     highlight: "scams",
-    slug: "cryptocurrency",
     image: "scam-images/crypto_scam_image.webp",
+    alt: "Bitcoin symbol on a dark background",
     paragraphs: [
-      "Cryptocurrency market significantly grew within past 10 years and there is a high probability of making a big profit investing in virtual money. Scams and fraudulent schemes are everywhere online so the prospect of making 'quick money' can blind most people even though there is much higher risk involved into crypto transactions.",
-      "Complex blockchain technology crypto companies are using is considered safe, however scammers find ways to take advantage of naive investors breaking into users' digital wallets. Keeping in mind the fact that people usually buy cryptocurrencies using credit cards, wire transfer or other types of payments there is bank liability taking place. Thus there is a legitimate solution to get your money back.",
+      "Cryptocurrency fraud usually starts with an offer that looks like an investment opportunity: a trading platform, a mining scheme or a \"crypto expert\" met online. Victims are persuaded to buy crypto and send it to wallets or platforms the scammers control. Because many victims first buy crypto by card or bank transfer, the payment trail often starts at a regulated bank or exchange, which is why records of every transaction matter.",
     ],
+    warning: "unsolicited contact on social media or messaging apps; promised fixed or guaranteed returns; pressure to deposit more to \"unlock\" a withdrawal; instructions to install remote-access software; a platform not listed with any financial regulator.",
     iconPath: "M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z",
     number: "03",
   },
   {
     title: "Online casino",
     highlight: "scams",
-    slug: "online-casino",
     image: "scam-images/casino_scams_image.webp",
+    alt: "Casino chip with a spade symbol breaking apart into digital fragments",
     paragraphs: [
-      "The global online gambling market today is worth around 60 billion USD and keeps growing exponentially. Being a part of an online gambling community is quite risky by itself since virtual poker, casinos and sports betting websites use various fraudulent moves to decrease your chances to win. Online casinos, slot machines and so on are not designed to help you earning money, they do care only about generating as much revenue as possible on their end. Even though a large number of casinos are fully licensed and legitimate, there are a lot of shady players who ridiculously over-charge for the withdrawal or freeze players' accounts once they try to pull their money out. There are multiple ways for cybercriminals and fraudsters to game the system from using bonus abuse techniques to steal your credit card details.",
+      "Unlicensed online casinos and betting sites may refuse withdrawals, freeze accounts after a win, or charge hidden fees. Some are set up only to collect deposits and card details. Before playing, check that the operator holds a licence from a recognised gambling regulator. ScamHelp does not assist with recovering ordinary gambling losses at licensed operators.",
     ],
+    warning: "no licence number, or one you cannot verify with the regulator; withdrawals delayed with repeated new document requests; bonus terms that make withdrawals impossible; customer support that disappears after a large win.",
     iconPath: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
     number: "04",
   },
   {
     title: "Fake exchange",
     highlight: "scams",
-    slug: "fake-exchange",
     image: "scam-images/exchange_scams_image.webp",
+    alt: "Crypto coin dissolving into green digital particles",
     paragraphs: [
-      "The cryptocurrency market has seen tremendous growth over the past decade, attracting investors with the potential for significant profits. Unfortunately, this rapid rise has also led to an increase in scams and fraudulent schemes, especially through fake cryptocurrency exchanges. These scams prey on the desire to make quick profits, often blinding people to the high risks involved.",
-      "Fake exchanges imitate real platforms, tricking investors into trusting them. After funds are deposited, scammers can vanish, leaving wallets empty. Although blockchain is secure, scammers use clever tactics to exploit newcomers. Many fund these fake accounts via credit cards or bank transfers, making it possible to recover lost funds through financial institutions. If you've fallen victim to a fake exchange, there are legitimate ways to pursue recovery.",
+      "Fake crypto exchanges copy the look of real platforms. They show your deposits and a growing balance, but the funds never reach a real trading account, and withdrawals are blocked or made conditional on further payments. When the scammers have collected enough, the site disappears.",
     ],
+    warning: "the exchange was recommended by someone you met online; the web address is slightly different from a known exchange; you must pay a \"tax\" or \"verification fee\" to withdraw; the app is not in the official app stores.",
     iconPath: "M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4",
     number: "05",
   },
   {
     title: "Investment",
     highlight: "scams",
-    slug: "investment",
     image: "scam-images/investment_scam_image.webp",
+    alt: "Laptop on a desk showing a price chart that is partly torn away",
     paragraphs: [
-      `The global investment market has grown massively, attracting people seeking high returns. However, the promise of quick profits makes investment schemes risky, as many fraudulent "investment opportunities" are designed to deceive. Fake investment platforms often use unrealistic promises of guaranteed returns to lure in unsuspecting investors, only to disappear with their money. While some investment firms are legitimate, there are many scammers who charge excessive fees, delay withdrawals, or freeze accounts when investors try to cash out. Cybercriminals use various tactics, from manipulating returns to phishing for personal information, to exploit those looking to grow their wealth.`,
+      "Fake investment platforms promise high or guaranteed returns to attract deposits. They often show convincing dashboards and pay out small early withdrawals to build trust, then delay larger withdrawals, invent fees or freeze accounts. Scammers may also use the opportunity to collect personal and identity documents.",
     ],
+    warning: "returns that are far above market rates; pressure to decide quickly; requests to keep the investment secret; a company you cannot find in an official register.",
     iconPath: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
     number: "06",
   },
   {
     title: "Other",
     highlight: "scams",
-    slug: null,
     image: "scam-images/other_scams_image.webp",
+    alt: "Two smartphones, one shattering into green particles",
     paragraphs: [
       `Unwanted emails and messages bombard us on a regular basis. Many people ignore, delete or toss junk mail in the rubbish knowing that these messages are most likely mass-market scams. Scammers will often use persuasion techniques such as pretending to be a legitimate business and using local area codes to build trust and familiarity. They make time-sensitive claims to increase urgency. Some use images of money or prizes and even pictures of past "winners", these are typical 'Phishing Scams'.`,
-      `Others use legal-sounding text to create the perception of a legitimate company. People are generally most vulnerable in situations such as a sudden loss of regular income or in the case of impending retirement. If you have been contacted by someone with a quick solution to your most critical financial situation and they require personal information or payments from you, it is advisable to stop immediately. If you've been a victim of any type of a scam, it doesn't mean that your funds are lost forever.`,
+      `Others use legal-sounding text to create the perception of a legitimate company. People are generally most vulnerable in situations such as a sudden loss of regular income or in the case of impending retirement. If you have been contacted by someone with a quick solution to your most critical financial situation and they require personal information or payments from you, it is advisable to stop immediately.`,
     ],
+    warning: null,
     iconPath: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z",
     number: "07",
+  },
+  {
+    title: "Recovery",
+    highlight: "scams",
+    image: null,
+    alt: "",
+    paragraphs: [
+      "After a scam, victims are often contacted by people offering to get their money back, sometimes posing as lawyers, regulators or recovery firms. A legitimate firm publishes its fees, gives you a written agreement before you pay anything, and never asks for payment to release funds.",
+    ],
+    warning: "they contact you first; they promise a guaranteed recovery; they ask for upfront \"release fees\", taxes or payment in crypto; they cannot show a licence and company registration you can verify yourself.",
+    iconPath: "M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01",
+    number: "08",
   },
 ];
 ---
 
-<Layout title="Common Scams — ScamHelp" description="Learn about common scams including Forex fraud, binary options, cryptocurrency scams, fake exchanges, and more. Scam Help specializes in recovering assets lost to financial fraud.">
+<Layout title="Common Online Scams: Warning Signs and What to Do, ScamHelp" description="How forex, crypto, fake-exchange, investment and recovery scams work, the warning signs to look for, and what to do if you have been targeted.">
   <Navbar />
   <main class="bg-[#0a0a0f]">
 
@@ -121,7 +141,7 @@ const scams = [
           Common <span class="text-[#9ACF84]">Scams</span>
         </h1>
         <p class="text-white/40 max-w-xl mx-auto reveal" style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7">
-          Knowledge is your first line of defense. Learn about the most common types of fraud and how we can help you recover.
+          Knowledge is your first line of defence. Learn how the most common types of online fraud work, the warning signs to look for, and what to do if you have been targeted.
         </p>
       </div>
     </section>
@@ -153,12 +173,25 @@ const scams = [
                 <p class={`${isEven ? 'text-white/45' : 'text-[#0a0a0f]/60'} mb-4`} style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">{p}</p>
               ))}
 
+              {scam.warning && (
+                <p class={`${isEven ? 'text-white/45' : 'text-[#0a0a0f]/60'} mb-4`} style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
+                  <strong class={isEven ? 'text-white/80' : 'text-[#0a0a0f]/80'} style="font-family:'Montserrat',sans-serif;font-weight:600">Warning signs:</strong> {scam.warning}
+                </p>
+              )}
+
+              {/* What to do now */}
+              <div class={`mt-6 rounded-xl border px-5 py-4 ${isEven ? 'border-[#9ACF84]/20 bg-[#9ACF84]/[0.04]' : 'border-[#9ACF84]/30 bg-[#9ACF84]/[0.08]'}`}>
+                <p class={isEven ? 'text-white/70' : 'text-[#0a0a0f]/70'} style="font-size:14px;line-height:1.75">
+                  <strong class={isEven ? 'text-[#9ACF84]' : 'text-[#6BA055]'} style="font-family:'Montserrat',sans-serif;font-weight:600">What to do now: </strong>{whatToDoNow}
+                </p>
+              </div>
+
               <div class="mt-8">
-                <a href={`${base}/${scam.slug ? `contact-${scam.slug}-scams` : 'contact-us'}`} class="scam-report-btn group inline-flex items-center gap-3">
+                <a href="#consultation" class="scam-report-btn group inline-flex items-center gap-3">
                   <span class="w-10 h-10 rounded-full bg-[#9ACF84] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-4 h-4 text-[#0a0a0f]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    <svg class="w-4 h-4 text-[#0a0a0f]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                   </span>
-                  <span class={`${isEven ? 'text-white/60' : 'text-[#0a0a0f]/60'} group-hover:text-[#9ACF84] transition-colors`} style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">Report A Scam</span>
+                  <span class={`${isEven ? 'text-white/60' : 'text-[#0a0a0f]/60'} group-hover:text-[#9ACF84] transition-colors`} style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">Get a free case assessment</span>
                 </a>
               </div>
             </div>
@@ -167,21 +200,18 @@ const scams = [
             <div class={`reveal ${isEven ? 'lg:order-2 from-right' : 'lg:order-1 from-left'}`}>
               <div class={`scam-image-card rounded-2xl border ${isEven ? 'border-white/5 bg-white/[0.02]' : 'border-[#e8e8e8] bg-[#f8f8f8]'} overflow-hidden relative`} style="height:380px;">
                 {scam.image ? (
-                  <img src={`${base}/${scam.image}`} alt={`${scam.title} ${scam.highlight}`} class="w-full h-full object-cover" loading="lazy" />
+                  <img src={`${base}/${scam.image}`} alt={scam.alt} class="w-full h-full object-cover" loading="lazy" />
                 ) : (
                   <>
                     <div class="absolute inset-0 flex items-center justify-center">
                       <div class="w-24 h-24 rounded-3xl bg-[#9ACF84]/5 flex items-center justify-center">
-                        <svg class="w-12 h-12 text-[#9ACF84]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <svg class="w-12 h-12 text-[#9ACF84]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                           <path stroke-linecap="round" stroke-linejoin="round" d={scam.iconPath} />
                         </svg>
                       </div>
                     </div>
                     <div class={`absolute top-4 left-4 w-8 h-8 border-t border-l ${isEven ? 'border-[#9ACF84]/15' : 'border-[#9ACF84]/25'} rounded-tl-lg`}></div>
                     <div class={`absolute bottom-4 right-4 w-8 h-8 border-b border-r ${isEven ? 'border-[#9ACF84]/15' : 'border-[#9ACF84]/25'} rounded-br-lg`}></div>
-                    <div class="absolute bottom-6 left-6">
-                      <span class={`${isEven ? 'text-white/10' : 'text-[#0a0a0f]/15'}`} style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase">Image placeholder</span>
-                    </div>
                   </>
                 )}
               </div>
@@ -203,16 +233,16 @@ const scams = [
             Our <span class="text-[#9ACF84]">mission</span>
           </h2>
           <h3 class="text-[#0a0a0f] mb-8" style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:600">
-            Exercising your financial rights has never been so easy!
+            Know which options apply to you
           </h3>
         </div>
 
         <p class="text-[#0a0a0f]/60 mb-10 reveal" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-          We truly understand how stressful any financial loss is. This is especially true since the majority of consumers are not aware of their rights when it comes to any type of financial dispute. Credit or debit card chargeback, wire transfer recall, or other transaction dispute – let Scam Help take care of it! We will investigate your case in order to determine which national banking and consumer protection laws apply to make sure we do our best to put things right for you.
+          We understand how stressful a financial loss is. Most fraud victims don't know which rights apply to them or how to use them: card chargebacks, wire recalls and complaints to banks and ombudsman services each have their own rules and deadlines. We investigate each case to establish which options apply and help clients present their case properly.
         </p>
 
         <div class="reveal">
-          <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+          <a href={url('/contact-us/')} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
             Contact Us
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>

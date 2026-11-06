@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
 import Footer from '../components/Footer.astro';
+import OutcomesNote from '../components/OutcomesNote.astro';
 
 import { BASE as base, url } from '../lib/site';
 
@@ -17,46 +18,74 @@ const breadcrumbSchema = {
 };
 
 const steps = [
-  { title: "Get a free", highlight: "consultation", iconPath: "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" },
-  { title: "File a", highlight: "complaint", iconPath: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
-  { title: "Get a tailor-made", highlight: "solution", iconPath: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z" },
-  { title: "Open case,", highlight: "fight, and dispute", iconPath: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" },
-  { title: "Get a refund directly into", highlight: "your account", iconPath: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" },
+  {
+    title: "Free",
+    highlight: "consultation",
+    text: "You tell us what happened. We review your documents and tell you honestly whether we believe we can help.",
+    iconPath: "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z",
+  },
+  {
+    title: "Written",
+    highlight: "agreement",
+    text: "If you proceed, you receive a service agreement setting out the scope of work and fees. No payment is taken before you sign.",
+    iconPath: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+  },
+  {
+    title: "Investigation and",
+    highlight: "tracing",
+    text: "We analyse your transactions, trace the funds and identify the institutions involved. You receive a written report.",
+    iconPath: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+  },
+  {
+    title: "Complaints and",
+    highlight: "escalation",
+    text: "With your approval, we prepare complaints and supporting evidence for banks, exchanges, ombudsman services or regulators.",
+    iconPath: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+  },
+  {
+    title: "Updates and",
+    highlight: "next steps",
+    text: "We keep you informed of every response. Where legal action is needed, we can refer you to an independent law firm.",
+    iconPath: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
+  },
 ];
 
-const faqs = [
+type Faq = { q: string; a: string; link?: { before: string; text: string; href: string; after: string } };
+
+const faqs: Faq[] = [
   {
     q: "How do I know if I have been scammed?",
-    a: "There are many red flags when it comes to fraud. For example, unusual payment methods like paying a broker in cryptocurrency or something too good to be true. Scammers will present their products in the best way to trick you. If it has a sense of urgency and pressure it most likely is a scam. File a complaint with us today to check if you are a victim and for us to help get back what is rightfully yours!",
+    a: "Common signs include: you were promised high or guaranteed returns; you cannot withdraw your money; you are asked to pay fees or taxes before a withdrawal; the platform is not registered with a financial regulator; or contact suddenly stops. If any of these apply, stop all payments and contact your bank.",
   },
   {
     q: "Who are we?",
-    a: "Scam Help solves financial disputes by avoiding actual arbitration, which is way faster, more cost-effective, and shows a higher success rate. Our complex approach and broad experience help us to bring together the investigational part, anti-fraud practices, and knowledge of banking laws to successfully dispute the transactions in question and bring justice to you in a fast and efficient manner.",
+    a: "ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private investigation agency in The Hague licensed by the Dutch Ministry of Justice and Security (licence POB 07373, KvK 78091624).",
   },
   {
     q: "Why choose us?",
-    a: "Scam Help specialises in asset recovery; therefore, we use different complex approaches with our distinguished team members. Please visit our partner's page to read their full bio so you can feel confident with the team that is handling your case.",
+    a: "We are licensed and publicly verifiable, we publish our fees and agree them in writing before any work begins, and we tell you honestly at the free consultation whether we believe we can help.",
   },
   {
     q: "How long will my case take?",
-    a: "On average a case can take up to 8-12 weeks. However, the more complex a case is the longer it will take. Some cases can be won in as short as 14-21 days other cases can take up to 6-12 months (Typically cases with a loss of 100,000+)",
+    a: "We deliver the tracing report within 60 days of signing the service agreement; if a complex case needs longer, we tell you. Responses from banks, exchanges and ombudsman services can take from a few weeks to several months, depending on the institution and country.",
   },
   {
-    q: "Do I have to pay any fees before I start my case with Scam Help?",
-    a: "Depending on the timeline of the fraud. Most cases do require extensive work and therefore retainers are taken. The price depends on the complexity of the case, our team needs first needs to analyse the case and then give you a proposal.",
+    q: "Do I have to pay any fees before I start my case with ScamHelp?",
+    a: "The first consultation is free. If you decide to proceed, a retainer (from €1,500) is payable under a written service agreement before the investigation starts. No payment is taken before you sign, and we never ask for fees to release recovered funds.",
+    link: { before: " See ", text: "Our Fees", href: url('/fees/'), after: "." },
   },
   {
     q: "Do I have a time limit to submit my case?",
-    a: 'This depends on how you sent the funds to the criminal accounts. Certain cases do have a statute of limitations (mainly credit card fraud). Other cases do not. File a complaint today to see if your case qualifies.',
+    a: "Yes. Banks, card schemes and ombudsman services all set deadlines, which vary by country and payment method, so contact us as soon as possible. We generally take on cases where the fraud happened within the last 5 years.",
   },
   {
-    q: "What sets Scam Help aside from other recovery companies?",
-    a: "Most Scam Recovery sites are scams themselves or they deliver a poor and slow service. Most of them are run out of countries in Eastern Europe/Asia or offshore tax havens to gain as much profit as possible. These companies will ask for ridiculous upfront fees and lie about the team handling the case. What sets us aside from the competition – we publicly display our qualified team members who are distinguished in the field of AML and asset recovery. With a team, you can trust to handle your case. Visit our partners page to learn more.",
+    q: "What sets ScamHelp apart from other recovery companies?",
+    a: "We are a licensed Dutch private investigation agency. Our licence and company registration are publicly verifiable, our fees are published and agreed in writing before any work begins, and we never ask for fees to release recovered funds.",
   },
 ];
 ---
 
-<Layout title="Know Your Rights — ScamHelp" description="Learn about your rights as a fraud victim. Scam Help is an asset recovery firm licensed and regulated by the Ministry of Justice and the European Commission.">
+<Layout title="Your Rights After Online Fraud: Chargebacks and Complaints, ScamHelp" description="General information on chargebacks, bank complaints and other options for victims of online fraud. Free case assessment with a licensed Dutch investigation agency.">
   <Navbar />
   <main class="bg-[#0a0a0f]">
 
@@ -70,24 +99,24 @@ const faqs = [
         <img src={`${base}/rights_page_hero.webp`} alt="" class="w-full h-full object-cover" style="filter:brightness(0.12)" loading="eager" />
       </div>
       <div class="max-w-3xl mx-auto relative z-[1]">
-        <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Fraud Recovery</span>
+        <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Your options after fraud</span>
         <h1 class="text-white mb-5 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:700;line-height:1.1">
           Know your <span class="text-[#9ACF84]">rights</span>
         </h1>
         <p class="text-white/40 max-w-2xl mx-auto reveal" style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7">
-          There is always a chance to get a refund in case you were billed fraudulently. Our team of professionals will help you to gather the right evidence, deeply analyze your case, submit a dispute against a fraudulent merchant and bring justice by exercising your financial rights.
+          If you paid a fraudulent merchant or platform by card or bank transfer, you may have the right to dispute the payment or complain to your bank, card issuer or a financial ombudsman. Whether these rights apply depends on how you paid, when, and in which country. We assess this during a free consultation and help you prepare a well-documented case.
         </p>
       </div>
     </section>
 
-    <!-- Fight back (white bg) -->
+    <!-- Understanding online trading fraud (white bg) -->
     <section class="py-12 md:py-16 px-6 bg-white relative overflow-hidden">
       <div class="max-w-4xl mx-auto text-center reveal">
         <h2 class="text-[#0a0a0f] mb-6" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-          Fight <span class="text-[#9ACF84]">back!</span>
+          Understanding online <span class="text-[#9ACF84]">trading fraud</span>
         </h2>
         <p class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-          Many individuals get discouraged when facing fraud due to its nature. The boom in online trading is a direct result of the digital marketplace. Financial tools that offer easy and simple ways to invest your money also expose you to fraudulent practices such as Binary Options, CFD, Forex, and Cryptocurrency scams. Until fairly recently, those who lost money in investment fraud didn't have the necessary information or tools to help them recoup their funds. Scam Help specializes in recovering assets that were lost as the result of financial fraud. We hold the liable entities accountable!
+          Many individuals get discouraged when facing fraud due to its nature. The boom in online trading is a direct result of the digital marketplace. Financial tools that offer easy and simple ways to invest your money also expose you to fraudulent practices such as Binary Options, CFD, Forex, and Cryptocurrency scams. Victims often don't know that payments made by card or bank transfer may be open to dispute or complaint, or which institution to approach. Clear documentation of what happened is the starting point.
         </p>
       </div>
     </section>
@@ -103,47 +132,46 @@ const faqs = [
           </h2>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-5">
+        <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
           {steps.map((step, i) => (
-            <div class={`reveal delay-${i + 1} text-center`}>
+            <li class={`reveal delay-${i + 1} text-center`}>
               <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-[#9ACF84]/10 flex items-center justify-center">
-                <svg class="w-7 h-7 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <svg class="w-7 h-7 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d={step.iconPath} />
                 </svg>
               </div>
-              <p class="text-[#0a0a0f]" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;line-height:1.4">
-                {step.title} <span class="text-[#9ACF84]">{step.highlight}</span>
+              <h3 class="text-[#0a0a0f] mb-2" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;line-height:1.4">
+                <span class="sr-only">Step {i + 1}: </span>{step.title} <span class="text-[#9ACF84]">{step.highlight}</span>
+              </h3>
+              <p class="text-[#0a0a0f]/55" style="font-family:'Inter',sans-serif;font-size:13px;line-height:1.65">
+                {step.text}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
+
+        <OutcomesNote class="mt-10 text-center text-[#0a0a0f]/55!" />
       </div>
     </section>
 
-    <!-- Why Scam Help (white bg) -->
+    <!-- Who we are (white bg) -->
     <section class="py-12 md:py-16 px-6 bg-white border-t border-[#e8e8e8]">
       <div class="max-w-4xl mx-auto text-center">
         <div class="reveal">
           <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">About Us</span>
           <h2 class="text-[#0a0a0f] mb-8" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-            Why Scam <span class="text-[#9ACF84]">Help?</span>
+            Who we <span class="text-[#9ACF84]">are</span>
           </h2>
         </div>
 
         <div class="text-expandable space-y-6 reveal" data-truncate="200">
           <p class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            Scam Help is an asset recovery firm based in The Hague, Netherlands, licensed and regulated by the Ministry of Justice and the European Commission (Company Number KVK 78091624) and specializes in cases in The European Union and globally.
-          </p>
-          <p class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            There are many strategies scam companies use to steal your money – but that doesn't mean that your funds are lost forever. Our mission is to provide our clients with a proven way to recover their assets. Scam Help investigates cases through financial forensic analysis and assists in processing recovery claims through the banks, insurance underwriters, and private sector companies that are liable for the financial damages that the victims incurred.
-          </p>
-          <p class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            Building trust and guiding our clients to a successful recovery is our main priority. We have a broad range of clients no matter what type of fraud, so we know exactly what to do, how to read your particular situation and therefore we can use the law to your best advantage and create a strategy that will succeed. Investment rarely comes without a level of risk, but that risk increases exponentially for those unaware of the tactics of predatory criminals. We get your money back by enforcing your rights as a creditor, recovering funds for our clients in a wide range of strategies. Utilizing innovative technologies and human capital we give our clients the tools they need to initiate financial compensation claims.
+            ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private investigation agency in The Hague licensed by the Dutch Ministry of Justice and Security (licence POB 07373, KvK 78091624). We investigate fraud through financial forensic analysis and blockchain tracing, and help clients present their cases to the banks, card issuers and exchanges that processed their payments. Every case is different and we cannot guarantee any outcome, but we make sure your case is presented clearly, completely and on time.
           </p>
         </div>
 
         <div class="mt-10 reveal">
-          <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+          <a href={url('/contact-us/')} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
             Contact Us
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -163,9 +191,9 @@ const faqs = [
               Have any <span class="text-[#9ACF84]">questions?</span>
             </h2>
             <p class="text-white/40 mb-8" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.75">
-              Can't find the answer you're looking for? Reach out to our team and we'll get back to you within 24 hours.
+              Can't find the answer you're looking for? Reach out to our team and we'll reply within 48 hours.
             </p>
-            <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-white/60 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 transition-all" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+            <a href={url('/contact-us/')} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/10 text-white/60 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 transition-all" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
               Contact Us
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
@@ -175,23 +203,29 @@ const faqs = [
           <div class="lg:col-span-3 space-y-2">
             {faqs.map((faq, i) => (
               <div class={`faq-item reveal delay-${Math.min(i + 1, 6)} border border-white/5 rounded-xl overflow-hidden transition-all duration-300`}>
-                <button
-                  class="faq-trigger-dark w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-white/[0.03] transition-colors duration-200"
-                  type="button"
-                  aria-expanded="false"
-                >
-                  <span class="text-white/80" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;line-height:1.4">
-                    {faq.q}
-                  </span>
-                  <span class="faq-icon-dark flex-shrink-0 w-7 h-7 rounded-full bg-white/5 flex items-center justify-center transition-all duration-300">
-                    <svg class="w-3.5 h-3.5 text-white/40 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </span>
-                </button>
-                <div class="faq-body-dark" style="max-height:0;overflow:hidden;transition:max-height 0.35s ease;">
+                <h3>
+                  <button
+                    id={`faq-q-${i}`}
+                    class="faq-trigger-dark w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-white/[0.03] transition-colors duration-200"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls={`faq-a-${i}`}
+                  >
+                    <span class="text-white/80" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;line-height:1.4">
+                      {faq.q}
+                    </span>
+                    <span class="faq-icon-dark flex-shrink-0 w-7 h-7 rounded-full bg-white/5 flex items-center justify-center transition-all duration-300" aria-hidden="true">
+                      <svg class="w-3.5 h-3.5 text-white/40 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                  </button>
+                </h3>
+                <div id={`faq-a-${i}`} role="region" aria-labelledby={`faq-q-${i}`} class="faq-body-dark" style="max-height:0;overflow:hidden;transition:max-height 0.35s ease;">
                   <p class="px-5 pb-4 text-white/40" style="font-size:14px;line-height:1.75">
-                    {faq.a}
+                    {faq.a}{faq.link && (
+                      <>{faq.link.before}<a href={faq.link.href} class="text-[#9ACF84] hover:underline">{faq.link.text}</a>{faq.link.after}</>
+                    )}
                   </p>
                 </div>
               </div>
@@ -200,6 +234,13 @@ const faqs = [
 
         </div>
       </div>
+    </section>
+
+    <!-- General information disclaimer -->
+    <section class="px-6 pb-12 md:pb-16">
+      <p class="max-w-3xl mx-auto text-center text-white/45 reveal" style="font-size:13px;line-height:1.7">
+        The information on this page is general information about consumer and payment rights. It is not legal advice, and rights vary by country and payment method.
+      </p>
     </section>
 
     <ConsultationSection />

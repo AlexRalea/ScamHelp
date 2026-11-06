@@ -1,0 +1,122 @@
+---
+import { url, KVK_URL, JUSTIS_URL } from '../lib/site';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import ConsultationSection from '../components/ConsultationSection.astro';
+import Footer from '../components/Footer.astro';
+
+const siteUrl = "https://scamhelp.net";
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
+    { "@type": "ListItem", "position": 2, "name": "Refund Policy", "item": `${siteUrl}/refund-policy/` },
+  ],
+};
+---
+
+<Layout title="Refund Policy, ScamHelp" description="When payments to ScamHelp can and cannot be refunded, how billing errors are handled, and how to raise a payment question." schema={[breadcrumbSchema]}>
+  <Navbar />
+  <main class="min-h-screen bg-[#0a0a0f] pt-32 pb-20 px-6">
+    <article class="max-w-3xl mx-auto">
+
+      <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Legal</span>
+      <h1 class="text-white mb-4" style="font-family:'Montserrat',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.15">Refund <span class="text-[#9ACF84]">Policy</span></h1>
+      <p class="text-white/40 mb-12" style="font-family:'Inter',sans-serif;font-size:14px">Last updated: November 2026</p>
+
+      <div class="legal-content">
+
+        <p>This policy explains when payments to ScamHelp, a registered trade name of Transparent Business Solutions B.V., can and cannot be refunded. Please read it together with your service agreement, our <a href={url('/fees/')}>Fees page</a> and our <a href={url('/terms-and-conditions/')}>Terms and Conditions</a>. Where this policy and your signed service agreement differ, the service agreement applies.</p>
+
+        <h2>1. Nothing is charged before you sign</h2>
+        <p>Your first consultation is free. We do not ask for or accept any payment until you have received and signed a written service agreement.</p>
+
+        <h2>2. Why our fees are non-refundable</h2>
+        <p>At your request, we start work on your case as soon as the service agreement is signed. From that moment, investigators, specialist software and third-party data sources are assigned to your case, and the research and blockchain tracing begin.</p>
+        <p>For this reason, the retainer and any fees for additional services cannot be refunded once the service agreement is signed. This applies whatever the outcome of your case, because you are paying for professional investigation and advisory work, not for a guaranteed result.</p>
+
+        <h2>3. Your right of withdrawal</h2>
+        <p>When you sign the service agreement, you ask us to begin work immediately and confirm that the statutory right of withdrawal no longer applies once we have started. This policy does not affect any mandatory rights you have under consumer protection law.</p>
+
+        <h2>4. Success-based commission</h2>
+        <p>Commission is only charged on money that is actually returned to you, and is due within 15 days of the funds reaching you. If nothing is returned, no commission is due. Commission that has been paid is not refundable.</p>
+
+        <h2>5. If the agreement ends early</h2>
+        <p>The service agreement lasts six months from signing. ScamHelp may end it early if:</p>
+        <ul>
+          <li>you do not send the information your case needs (such as transaction IDs, wallet addresses and other evidence) within 30 days of signing;</li>
+          <li>you breach the agreement and do not put this right within 30 days of being notified;</li>
+          <li>an invoice is not paid within its payment term; or</li>
+          <li>we have reason to believe the services are being used in connection with a breach of the law.</li>
+        </ul>
+        <p>Fees already paid are not refunded if the agreement ends for any of these reasons.</p>
+
+        <h2>6. When we will refund you</h2>
+        <p>If you were charged twice, charged more than the amount in your service agreement, or charged without a signed agreement, we refund the incorrect amount in full once we have confirmed the error. The refund goes back to the payment method you used.</p>
+
+        <h2>7. Questions about a payment</h2>
+        <p>Email <a href="mailto:support@scamhelp.net">support@scamhelp.net</a> with your full name, case reference and the payment details. We aim to reply within 5 business days.</p>
+        <p>Please contact us before opening a dispute or chargeback with your bank or card provider, so we can look into the matter and resolve it with you directly.</p>
+
+        <h2>8. Contact</h2>
+        <p>
+          <strong>Transparent Business Solutions B.V. (ScamHelp)</strong><br />
+          Kalvermarkt 53, 2511 CB The Hague, Netherlands<br />
+          <a href={KVK_URL} target="_blank" rel="noopener noreferrer">KvK 78091624</a> · Licensed by the Dutch Ministry of Justice and Security, <a href={JUSTIS_URL} target="_blank" rel="noopener noreferrer">POB 07373</a><br />
+          <a href="mailto:support@scamhelp.net">support@scamhelp.net</a> · <a href={url('/contact-us/')}>Contact us</a>
+        </p>
+
+      </div>
+
+      <div class="mt-16">
+        <a href={url('/')} class="text-[#9ACF84] hover:underline" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;">← Back to Home</a>
+      </div>
+
+    </article>
+  </main>
+  <ConsultationSection />
+  <Footer />
+</Layout>
+
+<style>
+  .legal-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .legal-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1rem;
+  }
+  .legal-content ul, .legal-content ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .legal-content ul { list-style: disc; }
+  .legal-content ol { list-style: decimal; }
+  .legal-content li {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.5rem;
+  }
+  .legal-content a {
+    color: #9ACF84;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .legal-content a:hover {
+    color: #b5e0a0;
+  }
+  .legal-content strong {
+    color: rgba(255,255,255,0.7);
+  }
+</style>

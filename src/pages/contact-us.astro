@@ -4,28 +4,20 @@ import Navbar from '../components/Navbar.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
 
-import { BASE as base, url } from '../lib/site';
+import { url, KVK_URL, JUSTIS_URL, PHONES } from '../lib/site';
 
 const siteUrl = "https://scamhelp.net";
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
-    { "@type": "ListItem", "position": 2, "name": "Contact Us" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
+    { "@type": "ListItem", "position": 2, "name": "Contact Us", "item": `${siteUrl}/contact-us/` },
   ],
 };
-
-const phones = [
-  { label: "+31 70 7013260", href: "tel:+31707013260" },
-  { label: "+44 16 15286799", href: "tel:+441615286799" },
-  { label: "+1 209 797 7714", href: "tel:+12097977714" },
-  { label: "+1 647 689 7964", href: "tel:+16476897964" },
-  { label: "+61 2 7252 2224", href: "tel:+61272522224" },
-];
 ---
 
-<Layout title="Contact Us — ScamHelp" description="Get in touch with ScamHelp. Our anti-fraud specialists are ready to help you recover your lost funds. Free consultation available.">
+<Layout title="Contact ScamHelp" description="Contact ScamHelp for a free, confidential case assessment. Transparent Business Solutions B.V., Kalvermarkt 53, The Hague.">
   <Navbar />
   <main class="bg-[#0a0a0f]">
 
@@ -41,29 +33,57 @@ const phones = [
           Contact <span class="text-[#9ACF84]">Us</span>
         </h1>
         <p class="text-white/40 max-w-xl mx-auto reveal" style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7">
-          Our job is to help our customers stay safe while investing, trading, or purchasing goods and services. Reach out to one of our anti-fraud specialists to put things right for you.
+          Have you been a victim of online fraud? Request a free, confidential case assessment. We reply within 48 hours.
         </p>
       </div>
     </section>
 
-    <!-- Contact info + Map -->
+    <!-- Contact info: office, hours, email | phone numbers -->
     <section class="pb-10 px-6">
       <div class="max-w-7xl mx-auto">
-        <div class="reveal rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden flex flex-col lg:flex-row">
+        <div class="reveal rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden flex flex-col lg:flex-row contact-info">
 
-            <!-- Info section -->
-            <div class="p-6 md:p-8 space-y-4 flex-1 contact-info">
-              <!-- Address -->
+            <!-- Office, hours, email -->
+            <div class="p-6 md:p-8 space-y-6 flex-1">
+              <!-- Our office -->
               <div class="flex items-start gap-3">
                 <div class="contact-card-icon">
-                  <svg class="w-5 h-5 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <svg class="w-5 h-5 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 class="text-white mb-1" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">Office Address</h3>
-                  <p class="text-white/40 mt-0.5" style="font-size:13px;line-height:1.6">Kalvermarkt 53, 2511 CB,<br/>The Hague, Netherlands</p>
+                <div class="flex flex-col gap-1">
+                  <h2 class="text-white" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">Our office</h2>
+                  <p class="text-white/40" style="font-size:13px;line-height:1.6">
+                    Transparent Business Solutions B.V. (ScamHelp)<br/>
+                    Kalvermarkt 53, 2511 CB The Hague, Netherlands
+                  </p>
+                  <p class="text-white/40" style="font-size:13px;line-height:1.6">
+                    Licensed by the Dutch Ministry of Justice and Security,
+                    <a href={JUSTIS_URL} target="_blank" rel="noopener noreferrer" class="text-[#9ACF84] hover:underline">POB 07373</a>
+                  </p>
+                  <p class="text-white/40" style="font-size:13px;line-height:1.6">
+                    <a href={KVK_URL} target="_blank" rel="noopener noreferrer" class="text-[#9ACF84] hover:underline">KvK 78091624</a>
+                  </p>
+                  <a href="https://www.google.com/maps/place/Kalvermarkt+53,+2511+CB+Den+Haag" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-white/40 hover:text-[#9ACF84] transition-colors" style="font-size:12px">
+                    Open in Maps
+                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  </a>
+                </div>
+              </div>
+
+
+              <!-- Opening hours -->
+              <div class="flex items-start gap-3">
+                <div class="contact-card-icon">
+                  <svg class="w-5 h-5 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h2 class="text-white" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">Opening hours</h2>
+                  <p class="text-white/40" style="font-size:13px;line-height:1.6">Monday to Friday, 10:00 to 18:00 CET</p>
                 </div>
               </div>
 
@@ -71,123 +91,70 @@ const phones = [
               <!-- Email -->
               <div class="flex items-start gap-3">
                 <div class="contact-card-icon">
-                  <svg class="w-5 h-5 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <svg class="w-5 h-5 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 class="text-white mb-1" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">Email</h3>
+                <div class="flex flex-col gap-1">
+                  <h2 class="text-white" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">Email</h2>
                   <a href="mailto:support@scamhelp.net" class="text-[#9ACF84] hover:underline" style="font-size:13px">support@scamhelp.net</a>
                 </div>
               </div>
+            </div>
 
-
-              <!-- Phone -->
+            <!-- Call us -->
+            <div class="p-6 md:p-8 flex-1 border-t lg:border-t-0 lg:border-l border-white/5">
               <div class="flex items-start gap-3">
                 <div class="contact-card-icon">
-                  <svg class="w-5 h-5 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <svg class="w-5 h-5 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
-                <div>
-                  <h3 class="text-white mb-2" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">Phone Numbers</h3>
-                  <div class="grid grid-cols-2 gap-x-4 gap-y-1">
-                    {phones.map((p) => (
-                      <a href={p.href} class="block text-white/40 hover:text-[#9ACF84] transition-colors" style="font-size:13px">{p.label}</a>
-                    ))}
-                  </div>
+                <div class="flex flex-col gap-2 flex-1 min-w-0">
+                  <h2 class="text-white" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">Call us</h2>
+                  <table class="phone-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Country</th>
+                        <th scope="col">Number</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {PHONES.map((p) => (
+                        <tr>
+                          <th scope="row">{p.country}</th>
+                          <td><a href={`tel:${p.tel}`} class="hover:text-[#9ACF84] transition-colors">{p.display}</a></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
-
-
-              <!-- Hours -->
-              <div class="flex items-start gap-3">
-                <div class="contact-card-icon">
-                  <svg class="w-5 h-5 text-[#9ACF84]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="text-white mb-1" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">Office Hours</h3>
-                  <p class="text-white/40" style="font-size:13px;line-height:1.6">Mon–Fri: 9:00 AM – 7:00 PM<br/>Sat–Sun: Closed</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Map — right side on desktop -->
-            <div style="width:45%;min-height:100%;position:relative;flex-shrink:0;" class="hidden lg:block">
-              <a href="https://www.google.com/maps/place/Kalvermarkt+53,+2511+CB+Den+Haag" target="_blank" rel="noopener noreferrer" class="absolute z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9ACF84] text-[#0a0a0f] hover:bg-[#8BC275] transition-colors" style="top:5px;right:5px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600">
-                Open in Maps
-                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2452.071284209386!2d4.318539699999999!3d52.078432199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b722f20029e5%3A0x431a5747ad44f268!2sKalvermarkt%2053%2C%202511%20CB%20Den%20Haag%2C%20Netherlands!5e0!3m2!1sen!2sin!4v1704981722519!5m2!1sen!2sin"
-                style="border:0;filter:invert(90%) hue-rotate(180deg);position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-            <!-- Map — mobile (below info) -->
-            <div class="lg:hidden" style="height:250px;position:relative;">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2452.071284209386!2d4.318539699999999!3d52.078432199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b722f20029e5%3A0x431a5747ad44f268!2sKalvermarkt%2053%2C%202511%20CB%20Den%20Haag%2C%20Netherlands!5e0!3m2!1sen!2sin!4v1704981722519!5m2!1sen!2sin"
-                style="border:0;filter:invert(90%) hue-rotate(180deg);position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
             </div>
 
         </div>
       </div>
     </section>
 
-    <!-- Contact form -->
+    <!-- Send us a message (consultation form) -->
     <section class="pb-20 px-6">
-      <div class="max-w-3xl mx-auto reveal" id="contact-form">
+      <div class="max-w-3xl mx-auto reveal" id="consultation">
         <ContactForm />
       </div>
     </section>
 
-    <!-- Who can we help -->
+    <!-- What happens next -->
     <section class="py-16 px-6 border-t border-white/5">
-      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <div class="reveal">
-          <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-4 block" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Our Mission</span>
-          <h2 class="text-white mb-5" style="font-family:'Montserrat',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:600;line-height:1.2">
-            Who can we <span class="text-[#9ACF84]">help?</span>
-          </h2>
-          <p class="text-white/45 mb-6" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            If you're a victim of online fraud, you're not alone! Scam Help specializes in recovering assets lost to various online financial frauds. We craft winning strategies tailored to our client's needs and budget.
-          </p>
-          <a href="#contact-form" class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
-            Free Consultation
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
-            </svg>
-          </a>
-        </div>
-
-        <!-- Stats -->
-        <div class="grid grid-cols-2 gap-4 reveal from-right">
-          <div class="stat-card">
-            <span class="stat-number">750+</span>
-            <span class="stat-label">Satisfied Clients</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">60+</span>
-            <span class="stat-label">Countries Served</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">24/7</span>
-            <span class="stat-label">Support Available</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">1511</span>
-            <span class="stat-label">Trees Planted</span>
-          </div>
-        </div>
+      <div class="max-w-3xl mx-auto reveal">
+        <h2 class="text-white mb-5" style="font-family:'Montserrat',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:600;line-height:1.2">
+          What happens <span class="text-[#9ACF84]">next</span>
+        </h2>
+        <p class="text-white/45 mb-6" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
+          We review your enquiry and contact you within 48 hours to arrange a free consultation. If we believe we can help, we send you a written service agreement setting out the scope of work and fees. No payment is taken before you have signed it. See <a href={url('/fees/')} class="text-[#9ACF84] hover:underline">Our Fees</a> for details.
+        </p>
+        <p class="text-white/45" style="font-family:'Inter',sans-serif;font-size:13px;line-height:1.7">
+          Outcomes vary by case and are not guaranteed.
+        </p>
       </div>
     </section>
 
@@ -196,23 +163,8 @@ const phones = [
 </Layout>
 
 <style>
-  /* Contact cards */
-  .contact-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.25rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(255,255,255,0.05);
-    background: rgba(255,255,255,0.02);
-    transition: border-color 0.3s, background 0.3s;
-  }
-  .contact-card:hover {
-    border-color: rgba(154,207,132,0.15);
-    background: rgba(255,255,255,0.04);
-  }
   /* Reset margins on contact info text */
-  .contact-info h3,
+  .contact-info h2,
   .contact-info p,
   .contact-info a {
     margin: 0;
@@ -232,27 +184,39 @@ const phones = [
     color: #0a0a0f !important;
   }
 
-  /* Stat cards */
-  .stat-card {
-    padding: 1.5rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(255,255,255,0.05);
-    background: rgba(255,255,255,0.02);
-    text-align: center;
+  /* Phone numbers table */
+  .phone-table {
+    width: 100%;
+    border-collapse: collapse;
   }
-  .stat-number {
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #9ACF84;
-    margin-bottom: 0.25rem;
-  }
-  .stat-label {
+  .phone-table th,
+  .phone-table td {
     font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    color: rgba(255,255,255,0.35);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: left;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .phone-table thead th {
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.3);
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+  .phone-table tbody th {
+    font-weight: 400;
+    color: rgba(255,255,255,0.3);
+    padding-right: 1rem;
+  }
+  .phone-table td {
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+  }
+  .phone-table tbody tr:last-child th,
+  .phone-table tbody tr:last-child td {
+    border-bottom: 0;
   }
 </style>

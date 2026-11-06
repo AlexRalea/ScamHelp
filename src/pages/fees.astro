@@ -1,0 +1,194 @@
+---
+import { url } from '../lib/site';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import ConsultationSection from '../components/ConsultationSection.astro';
+import Footer from '../components/Footer.astro';
+
+const siteUrl = "https://scamhelp.net";
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
+    { "@type": "ListItem", "position": 2, "name": "Our Fees", "item": `${siteUrl}/fees/` },
+  ],
+};
+
+const feeRows = [
+  { service: "Case assessment", fee: "Free", when: "Not applicable" },
+  { service: "Investigation retainer", fee: "€1,500 to €15,000", when: "On signing the service agreement, before work starts" },
+  { service: "Additional services (complaints, demand letters, escalation)", fee: "€1,500 to €15,000", when: "Only after you approve a separate quote in writing" },
+  { service: "Custom complex investigations", fee: "From €15,000", when: "Agreed individually" },
+  { service: "Success-based commission", fee: "Typically 8% to 15% of funds returned to you", when: "Within 15 days of receiving returned funds; nothing is due if no funds are returned" },
+];
+---
+
+<Layout title="Our Fees, ScamHelp" description="ScamHelp's fees explained: a free case assessment, written agreement before any payment, and no release fees, ever." schema={[breadcrumbSchema]}>
+  <Navbar />
+  <main class="min-h-screen bg-[#0a0a0f] pt-32 pb-20 px-6">
+    <article class="max-w-3xl mx-auto">
+
+      <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Legal</span>
+      <h1 class="text-white mb-12" style="font-family:'Montserrat',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.15">Our <span class="text-[#9ACF84]">Fees</span></h1>
+
+      <div class="legal-content">
+
+        <p class="legal-intro">After a scam, the last thing you need is unclear pricing. This page sets out how ScamHelp charges for its work, what each fee covers, and the payments we will never ask you for.</p>
+
+        <h2>Your first consultation is free</h2>
+        <p>Before any fee is discussed, we review your case at no cost and with no obligation. Send us what you have, such as payment confirmations, bank statements, wallet addresses and messages, and we will give you a straight answer on whether we think we can help. If we don't think we can, we say so, and you owe nothing.</p>
+
+        <h2>Fees at a glance</h2>
+        <div class="legal-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Service</th>
+                <th scope="col">Fee</th>
+                <th scope="col">When it is paid</th>
+              </tr>
+            </thead>
+            <tbody>
+              {feeRows.map((row) => (
+                <tr>
+                  <th scope="row">{row.service}</th>
+                  <td>{row.fee}</td>
+                  <td>{row.when}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>All prices exclude VAT, which is added where applicable.</p>
+
+        <h2>What the retainer covers</h2>
+        <p>The retainer is a one-time, non-refundable payment for the investigation phase of your case. It covers a review of your documents, research into the people and companies involved using corporate, credit and media sources, blockchain tracing with professional investigation software, identification of the banks, exchanges and payment providers that handled your money, and a written Crypto Tracing Report. The amount depends on how complex your case is, how many transactions are involved and how many countries it touches. The exact figure is stated in your service agreement.</p>
+
+        <h2>Additional services</h2>
+        <p>If your case needs formal complaints to banks, exchanges, financial ombudsman services or regulators, demand letters or further escalation, we quote for this work separately. Nothing is started or charged until you have approved the quote in writing.</p>
+
+        <h2>Custom complex investigations</h2>
+        <p>Large, corporate or multi-country matters are scoped individually, with a fee agreed in advance.</p>
+
+        <h2>Success-based commission</h2>
+        <p>Our agreement also includes a commission on money that is actually returned to you, usually between 8% and 15% (excluding VAT). It is due within 15 days of the funds reaching you. We never ask for it in advance, and if no funds come back, you pay no commission.</p>
+
+        <h2>Lawyers' fees</h2>
+        <p>ScamHelp does not provide legal services. If your case needs court action, an independent law firm can take it on. That firm agrees and invoices its own fees, and we explain what to expect before you decide.</p>
+
+        <h2>Before you pay</h2>
+        <p>You sign a written service agreement before any paid work begins. Once it is signed, you have 30 days to send us the information we need, such as transaction IDs, wallet addresses and other evidence. We deliver your Crypto Tracing Report within 60 days of signing; if a complex case needs longer, we tell you and set a new date. The agreement runs for six months.</p>
+
+        <h2>Cases we take on</h2>
+        <p>We generally work on cases with losses of EUR 5,000 or more that happened within the last 5 years, where records of the payments (bank transfers, card payments or cryptocurrency transactions) are available.</p>
+
+        <h2>How to pay</h2>
+        <p>You can pay by credit card, debit card or bank wire transfer, made out to Transparent Business Solutions B.V. only. You receive an invoice for every payment.</p>
+
+        <h2>Refunds</h2>
+        <p>Work on your case starts as soon as the service agreement is signed, at your request. For that reason, the retainer and fees for services are non-refundable, and the statutory right of withdrawal no longer applies once work has begun. Please read the agreement carefully and ask us anything during your free consultation. Full details are in our <a href={url('/refund-policy/')}>Refund Policy</a> and <a href={url('/terms-and-conditions/')}>Terms and Conditions</a>.</p>
+
+        <h2>Payments we will never ask for</h2>
+        <p>ScamHelp will never ask you for a "release fee", "unlocking fee", tax, withdrawal charge or any other payment to receive recovered funds. If someone claiming to be from ScamHelp asks for one, do not pay. Contact us straight away at <a href="mailto:support@scamhelp.net">support@scamhelp.net</a>.</p>
+
+        <h2>Please note</h2>
+        <p>Outcomes vary by case and are not guaranteed. They depend on factors such as jurisdiction, the platform or institution involved, how long ago the fraud happened, and the cooperation of banks, exchanges, regulators and other third parties. Our fees pay for professional investigation and advisory work, not for a guaranteed result.</p>
+        <p>ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private investigation agency licensed by the Dutch Ministry of Justice and Security (licence POB 07373), registered under KvK 78091624, Kalvermarkt 53, 2511 CB The Hague, Netherlands.</p>
+
+        <p class="legal-callout">Have a question about fees? Email <a href="mailto:support@scamhelp.net">support@scamhelp.net</a> or <a href="#consultation">request your free case assessment</a>.</p>
+
+      </div>
+
+      <div class="mt-16">
+        <a href={url('/')} class="text-[#9ACF84] hover:underline" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600;">← Back to Home</a>
+      </div>
+
+    </article>
+  </main>
+  <ConsultationSection />
+  <Footer />
+</Layout>
+
+<style>
+  .legal-intro {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 1.5rem;
+  }
+  .legal-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .legal-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1rem;
+  }
+  .legal-content a {
+    color: #9ACF84;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .legal-content a:hover {
+    color: #b5e0a0;
+  }
+  .legal-content strong {
+    color: rgba(255,255,255,0.7);
+  }
+  .legal-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.625rem;
+  }
+  .legal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .legal-content thead th {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    text-align: left;
+    background: rgba(154,207,132,0.08);
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .legal-content tbody th,
+  .legal-content tbody td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.5);
+  }
+  .legal-content tbody th {
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+  }
+  .legal-content tbody tr:last-child th,
+  .legal-content tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .legal-callout {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    border-left: 3px solid rgba(154,207,132,0.3);
+    background: rgba(255,255,255,0.02);
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+</style>

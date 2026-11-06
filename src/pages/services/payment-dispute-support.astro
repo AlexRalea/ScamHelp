@@ -3,50 +3,52 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import ConsultationSection from '../../components/ConsultationSection.astro';
 import Footer from '../../components/Footer.astro';
+import InfoBlock from '../../components/InfoBlock.astro';
+import OutcomesNote from '../../components/OutcomesNote.astro';
 
 import { BASE as base, url } from '../../lib/site';
 
 const services = [
   {
-    title: "Refund Recovery",
-    description: "Our specialists handle the recovery of unauthorized transaction refunds. We work directly with banks and financial institutions to ensure a swift and secure recovery process.",
+    title: "Chargeback and recall preparation",
+    description: "We prepare card chargeback and wire recall requests with the transaction records and evidence your bank or card issuer needs to review them.",
     icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z",
   },
   {
-    title: "Scammed Money Recovery",
-    description: "We help victims of online scams to get their money back. Our approach involves thorough investigation and collaboration with law enforcement agencies.",
+    title: "Fraud case documentation",
+    description: "We document how the scam worked, who was paid and when, so your case can be presented clearly to banks and authorities. We can also prepare a report for you to submit to the police.",
     icon: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
   },
   {
-    title: "Bank Refund Scams",
-    description: "Our investigation service offers a thorough examination of bank fraud cases and their associated transactions. We help you understand the movement of funds, uncovering hidden patterns.",
+    title: "Bank fraud investigation",
+    description: "We examine bank fraud cases and the associated transactions to establish how funds moved and which institutions were involved.",
     icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
   },
   {
-    title: "Online Fraud Refund",
-    description: "We specialize in navigating fund recovery and help clients recover money lost to online fraud. Our experts use advanced tools and techniques to trace fraudulent transactions.",
+    title: "Transaction tracing",
+    description: "Where funds moved onward, including into cryptocurrency, we trace the transactions to identify where they went.",
     icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
   },
   {
-    title: "Liaison with Financial Institutions",
-    description: "Our experts have established relationships with banks, credit card companies, and other financial institutions, allowing us to navigate the complexities of fund recovery efficiently.",
+    title: "Complaints to banks and ombudsman services",
+    description: "With your approval, we prepare formal complaints to banks, card issuers and financial ombudsman services, drawing on our experience presenting cases to these institutions.",
     icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
   },
   {
     title: "Ongoing Support and Updates",
-    description: "We believe in transparent communication. Throughout the recovery process, you'll receive regular updates and have continuous access to our team for any questions.",
+    description: "We believe in transparent communication. Throughout the process, you'll receive regular updates and have continuous access to our team for any questions.",
     icon: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z",
   },
 ];
 
 const faqs = [
   {
-    question: "How does Scam Help identify if my case is eligible for recovery?",
+    question: "How do you assess my case?",
     answer: "We start with a detailed assessment of your case, examining the nature of the scam, the amount lost, transaction details, and communication records.",
   },
   {
-    question: "What types of scams can Scam Help assist with?",
-    answer: "Our fund recovery services cover a wide range of scenarios including online investment frauds, cryptocurrency scams, credit card fraud, phishing attacks, and more.",
+    question: "What types of scams can ScamHelp assist with?",
+    answer: "Our payment dispute support covers a wide range of scenarios including online investment frauds, cryptocurrency scams, credit card fraud, phishing attacks, and more.",
   },
   {
     question: "What should I provide for my initial consultation?",
@@ -54,21 +56,24 @@ const faqs = [
   },
   {
     question: "Is there a fee for the initial consultation?",
-    answer: "We offer a free initial consultation to discuss the specifics of your case and provide initial guidance.",
+    answer: "We offer a free initial consultation to discuss the specifics of your case and provide initial guidance. If you decide to proceed, fees are set out in a written agreement before any work begins. See Our Fees.",
   },
   {
-    question: "What is the typical success rate of Scam Help's recovery efforts?",
-    answer: "While each case is unique, our team has maintained a high success rate, thanks to our specialized knowledge and collaborative approach with international law enforcement agencies.",
+    question: "Do you publish a success rate?",
+    answer: "We do not publish a success rate, because outcomes depend on factors outside our control, such as the bank or exchange involved, the jurisdiction and the age of the case. At the consultation, we give you an honest view of your case.",
   },
   {
-    question: "How long does the recovery process take?",
+    question: "How long does the process take?",
     answer: "The timeline can vary significantly depending on the complexity of the case, the jurisdiction involved, and the responsiveness of financial institutions. Cases can take anywhere from a few weeks to several months.",
   },
   {
-    question: "What sets Scam Help aside from other recovery companies?",
-    answer: "Most Scam Recovery sites are scams themselves or deliver a poor and slow service. What sets us aside — we publicly display our qualified team members who are distinguished in the field of AML and asset recovery.",
+    question: "What sets ScamHelp apart?",
+    answer: "We are a licensed Dutch private investigation agency. Our licence and company registration are publicly verifiable, our fees are published and agreed in writing before any work begins, and we never ask for fees to release recovered funds.",
   },
 ];
+
+// FAQ answers ending in "See Our Fees." get a link to the fees page.
+const FEES_REF = "See Our Fees.";
 
 const siteUrl = "https://scamhelp.net";
 
@@ -99,13 +104,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       "position": 2,
       "name": "Services",
-      "item": `${siteUrl}/services`,
+      "item": `${siteUrl}/services/`,
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Fund Recovery",
-      "item": `${siteUrl}/services/fund-recovery`,
+      "name": "Payment Dispute Support",
+      "item": `${siteUrl}/services/payment-dispute-support/`,
     },
   ],
 };
@@ -113,21 +118,22 @@ const breadcrumbSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Fund Recovery Services",
+  "name": "Payment Dispute Support",
+  "url": `${siteUrl}/services/payment-dispute-support/`,
   "provider": {
     "@type": "Organization",
     "name": "ScamHelp",
-    "url": siteUrl,
+    "url": `${siteUrl}/`,
   },
-  "description": "Professional fund recovery services helping victims of online fraud, bank scams, and unauthorized transactions recover their lost money.",
+  "description": "ScamHelp helps victims of online fraud and unauthorised transactions prepare chargeback, recall and complaint cases for their bank or card issuer.",
   "areaServed": "Worldwide",
-  "serviceType": "Fund Recovery",
+  "serviceType": "Payment Dispute Support",
 };
 ---
 
 <Layout
-  title="Fund Recovery Services — ScamHelp | Recover Lost Funds"
-  description="ScamHelp's professional fund recovery services help victims of online fraud, bank scams, and unauthorized transactions recover their lost money. Free consultation available."
+  title="Payment Dispute Support for Fraud Victims, ScamHelp"
+  description="ScamHelp helps victims of online fraud and unauthorised transactions prepare chargeback, recall and complaint cases for their bank or card issuer. Free case assessment."
 >
   <Navbar />
   <main>
@@ -140,12 +146,12 @@ const serviceSchema = {
     <!-- ═══════════ 1. HERO (dark) ═══════════ -->
     <section class="bg-[#0a0a0f] px-6 text-center" style="padding-top:10rem;padding-bottom:5rem;">
       <div class="max-w-3xl mx-auto">
-        <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Fund Recovery</span>
+        <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Payment Dispute Support</span>
         <h1 class="text-white mb-5 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:700;line-height:1.1">
-          Expert <span class="text-[#9ACF84]">Fund Recovery Services</span>
+          Payment <span class="text-[#9ACF84]">Dispute Support</span>
         </h1>
         <p class="text-white/40 max-w-xl mx-auto reveal" style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7">
-          We help victims of online fraud, banking scams, and unauthorized transactions recover their lost funds through expert strategies and proven recovery methods.
+          We help victims of online fraud and unauthorised transactions prepare dispute and complaint cases for their bank or card issuer, with the evidence those institutions require.
         </p>
       </div>
     </section>
@@ -158,7 +164,7 @@ const serviceSchema = {
         <div class="text-center mb-10 reveal">
           <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">What We Offer</span>
           <h2 class="text-[#0a0a0f] mb-4" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-            Our Financial <span class="text-[#9ACF84]">Fund Recovery</span> Services
+            What this service <span class="text-[#9ACF84]">covers</span>
           </h2>
         </div>
 
@@ -177,6 +183,17 @@ const serviceSchema = {
             </div>
           ))}
         </div>
+
+        <!-- What you receive + Fees + outcomes (dark text on this white section) -->
+        <div class="mt-10 space-y-4 reveal [&_.info-block_p]:text-[#0a0a0f]/70 [&_.outcomes-note]:text-[#0a0a0f]/50">
+          <InfoBlock label="What you receive">
+            a review of your payments and the dispute options that apply; prepared chargeback, recall or complaint files with supporting evidence; and regular updates on every response.
+          </InfoBlock>
+          <InfoBlock label="Fees">
+            Investigation fees start from €1,500 and are agreed in writing before any work begins. See <a href={url('/fees/')} class="text-[#6BA055] underline underline-offset-2 hover:text-[#9ACF84] transition-colors">Our Fees</a>.
+          </InfoBlock>
+          <OutcomesNote class="px-5" />
+        </div>
       </div>
     </section>
 
@@ -188,32 +205,12 @@ const serviceSchema = {
         <div>
           <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-4 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">About Us</span>
           <h2 class="text-white mb-6" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-            About Scam <span class="text-[#9ACF84]">Help</span>
+            About Scam<span class="text-[#9ACF84]">Help</span>
           </h2>
-          <p class="text-white/45 mb-6" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            ScamHelp is a leading fund recovery company dedicated to helping victims of online scams and financial fraud reclaim their lost assets. With a team of experienced professionals, we specialize in navigating the complex process of recovering funds from fraudulent entities, banks, and financial institutions.
-          </p>
-          <h3 class="text-white mb-4" style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:600">
-            Why wait? Secure your digital assets today!
-          </h3>
-          <ul class="space-y-3 mb-6">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-[#9ACF84] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span class="text-white/45" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75"><strong class="text-white/70">Immediate Support</strong> — Our team is ready to assist you from the very first consultation, providing actionable steps to begin your recovery journey.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-[#9ACF84] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span class="text-white/45" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75"><strong class="text-white/70">Learn More</strong> — Explore our comprehensive resources and case studies to understand how we can help you.</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-[#9ACF84] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span class="text-white/45" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75"><strong class="text-white/70">Request a Demo</strong> — See our recovery process in action and learn how we can tailor our services to your specific case.</span>
-            </li>
-          </ul>
           <p class="text-white/45 mb-8" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            Don't let scammers get away with your hard-earned money. Take the first step toward recovery today.
+            ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private investigation agency based in The Hague and licensed by the Dutch Ministry of Justice and Security (licence POB 07373, KvK 78091624). Our team of fraud investigators, financial forensic analysts and case managers works on online investment, cryptocurrency and banking fraud.
           </p>
-          <a href={`${base}/about`} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+          <a href={url('/about/')} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
             Learn More
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -221,7 +218,7 @@ const serviceSchema = {
 
         <!-- Image -->
         <div class="reveal from-right rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden" style="aspect-ratio: 1200 / 792;">
-          <img src={`${base}/who_we_are_image.webp`} alt="ScamHelp fund recovery experts" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/who_we_are_image.webp`} alt="" class="w-full h-full object-cover" loading="lazy" />
         </div>
 
       </div>
@@ -235,16 +232,16 @@ const serviceSchema = {
 
         <!-- Image -->
         <div class="reveal rounded-2xl border border-[#e8e8e8] bg-[#f8f8f8] overflow-hidden" style="aspect-ratio: 1200 / 788;">
-          <img src={`${base}/why_us_image.webp`} alt="How ScamHelp assists with fund recovery" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/why_us_image.webp`} alt="" class="w-full h-full object-cover" loading="lazy" />
         </div>
 
         <!-- Text -->
         <div>
           <h2 class="text-[#0a0a0f] mb-6 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-            How Can Scam Help Assist You With <span class="text-[#9ACF84]">Fund Recovery?</span>
+            How we work on <span class="text-[#9ACF84]">your case</span>
           </h2>
           <p class="text-[#0a0a0f]/60 mb-6" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            Our dedicated team combines legal expertise, financial knowledge, and cutting-edge technology to maximize your chances of recovering lost funds. We handle every aspect of the recovery process so you can focus on moving forward.
+            We combine financial investigation and blockchain tracing with experience of how banks and card issuers handle disputes. You receive regular updates at every stage.
           </p>
           <ul class="space-y-3 mb-8">
             <li class="flex items-start gap-3">
@@ -253,15 +250,15 @@ const serviceSchema = {
             </li>
             <li class="flex items-start gap-3">
               <svg class="w-5 h-5 text-[#9ACF84] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">Experienced experts</span>
+              <span class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">Experienced investigators</span>
             </li>
             <li class="flex items-start gap-3">
               <svg class="w-5 h-5 text-[#9ACF84] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">Efficient handling</span>
+              <span class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">Written agreement and clear fees</span>
             </li>
             <li class="flex items-start gap-3">
               <svg class="w-5 h-5 text-[#9ACF84] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              <span class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">Successful recovery track record</span>
+              <span class="text-[#0a0a0f]/60" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">Licensed and publicly verifiable</span>
             </li>
           </ul>
           <a href="#consultation" class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
@@ -277,12 +274,12 @@ const serviceSchema = {
     <section class="py-12 md:py-16 px-6 bg-[#0a0a0f]">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-white mb-5 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-          Ready to Reclaim Your <span class="text-[#9ACF84]">Lost Funds?</span>
+          Not sure what your <span class="text-[#9ACF84]">options are?</span>
         </h2>
         <p class="text-white/40 max-w-xl mx-auto mb-8" style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7">
-          Don't let scammers keep what's rightfully yours. Our team of experts is ready to help you recover your lost funds with a proven, professional approach.
+          Book a free, confidential case assessment. We'll tell you honestly whether we believe we can help.
         </p>
-        <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+        <a href={url('/contact-us/')} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
           Contact Us
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
@@ -313,7 +310,11 @@ const serviceSchema = {
                 </span>
               </button>
               <div class="faq-body" style="max-height:0;overflow:hidden;transition:max-height 0.35s ease, padding 0.35s ease;">
-                <p class="px-6 pb-5 text-[#777]" style="font-size:14px;line-height:1.75">{faq.answer}</p>
+                <p class="px-6 pb-5 text-[#777]" style="font-size:14px;line-height:1.75">
+                  {faq.answer.endsWith(FEES_REF)
+                    ? <>{faq.answer.slice(0, -FEES_REF.length)}See <a href={url('/fees/')} class="text-[#6BA055] underline underline-offset-2 hover:text-[#9ACF84] transition-colors">Our Fees</a>.</>
+                    : faq.answer}
+                </p>
               </div>
             </div>
           ))}

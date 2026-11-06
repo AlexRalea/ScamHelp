@@ -3,33 +3,35 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
 import Footer from '../components/Footer.astro';
+import InfoBlock from '../components/InfoBlock.astro';
+import OutcomesNote from '../components/OutcomesNote.astro';
 
 import { BASE as base, url } from '../lib/site';
 const siteUrl = "https://scamhelp.net";
 
 const services = [
   {
-    title: "Fund Recovery",
-    description: "Professional fund recovery services for victims of online fraud, bank scams, and unauthorized transactions. We work directly with banks and financial institutions to reclaim your lost money.",
-    href: `${base}/services/payment-dispute-support/`,
+    title: "Payment Dispute Support",
+    description: "We help victims of online fraud prepare chargeback, recall and complaint cases for their bank or card issuer, with the evidence those institutions require.",
+    href: url('/services/payment-dispute-support/'),
     iconPath: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
   },
   {
     title: "Crypto Tracing",
-    description: "Advanced blockchain analytics to trace cryptocurrency transactions, identify wallet addresses, and track stolen digital assets across multiple chains and protocols.",
-    href: `${base}/services/crypto-tracing`,
+    description: "Blockchain analysis to trace cryptocurrency transactions, identify the wallets involved and locate the exchanges where funds were cashed out.",
+    href: url('/services/crypto-tracing/'),
     iconPath: "M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z",
   },
   {
-    title: "Crypto Investigation",
-    description: "Expert cryptocurrency fraud investigation services using advanced forensic techniques to uncover fraudulent activities, recover assets, and support legal proceedings.",
-    href: `${base}/services/crypto-fraud-investigation/`,
+    title: "Crypto Fraud Investigation",
+    description: "Forensic investigation of crypto fraud, resulting in a written report you can share with your bank, exchange, lawyer or the police.",
+    href: url('/services/crypto-fraud-investigation/'),
     iconPath: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7",
   },
   {
-    title: "Dispute Resolution",
-    description: "Certified alternate dispute resolution services including expert mediation, negotiation support, and legal representation for victims of financial fraud.",
-    href: `${base}/services/complaint-support/`,
+    title: "Complaint and Escalation Support",
+    description: "Formal complaints to banks, exchanges, financial ombudsman services and regulators, prepared and followed up on your behalf with your approval.",
+    href: url('/services/complaint-support/'),
     iconPath: "M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.97zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.97z",
   },
 ];
@@ -45,8 +47,8 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="Our Services — ScamHelp | Fund Recovery & Crypto Forensics"
-  description="ScamHelp offers professional fund recovery, cryptocurrency tracing, blockchain investigation, and dispute resolution services. Expert team. Free consultation."
+  title="Our Services: Fraud Investigation and Complaint Support, ScamHelp"
+  description="Crypto tracing, fraud investigation, payment dispute support and complaint support from a licensed Dutch private investigation agency. Free case assessment."
 >
   <Navbar />
   <main class="bg-[#0a0a0f]">
@@ -65,7 +67,7 @@ const breadcrumbSchema = {
           Our <span class="text-[#9ACF84]">Services</span>
         </h1>
         <p class="text-white/40 max-w-xl mx-auto reveal" style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7">
-          From fund recovery to blockchain forensics, our expert team provides comprehensive services to help fraud victims reclaim their lost assets.
+          From blockchain tracing to bank complaints, our licensed investigators help fraud victims document their case and take it to the right institutions.
         </p>
       </div>
     </section>
@@ -92,11 +94,19 @@ const breadcrumbSchema = {
             </a>
           ))}
         </div>
+
+        <!-- Fees + outcomes (dark text on this white section) -->
+        <div class="mt-10 space-y-4 reveal [&_.info-block_p]:text-[#0a0a0f]/70 [&_.outcomes-note]:text-[#0a0a0f]/50">
+          <InfoBlock>
+            Investigation fees start from €1,500 and are agreed in writing before any work begins. See <a href={url('/fees/')} class="text-[#6BA055] underline underline-offset-2 hover:text-[#9ACF84] transition-colors">Our Fees</a>.
+          </InfoBlock>
+          <OutcomesNote class="px-5" />
+        </div>
       </div>
     </section>
 
 
-    <!-- ─── WHY SCAM HELP ─── -->
+    <!-- ─── WHY SCAMHELP ─── -->
     <section class="py-12 md:py-16 px-6 relative overflow-hidden">
       <div class="absolute right-0 top-1/4 w-[400px] h-[400px] bg-[#9ACF84]/3 rounded-full blur-[180px] pointer-events-none"></div>
       <div class="relative z-10 max-w-4xl mx-auto text-center">
@@ -107,7 +117,7 @@ const breadcrumbSchema = {
           </h2>
         </div>
         <p class="text-white/40 mb-12 reveal" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-          Scam Help leverages regulations and consumer rights for professional recovery services. Upon validating your request and confirming fraud, our team guides you through the refund process. Our global partners, comprising former law enforcement officers and banking specialists, bring unique anti-fraud solutions with the highest ethical standards.
+          ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private investigation agency licensed by the Dutch Ministry of Justice and Security. We assess every case honestly before any fees are agreed, set out our fees in writing, and keep clients informed at every stage.
         </p>
 
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
@@ -120,8 +130,8 @@ const breadcrumbSchema = {
             <span class="text-white/30" style="font-family:'Inter',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.05em">Countries</span>
           </div>
           <div class="p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#9ACF84]/15 transition-all duration-300 reveal delay-3">
-            <span class="block text-[#9ACF84] mb-1" style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:700">24/7</span>
-            <span class="text-white/30" style="font-family:'Inter',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.05em">Support</span>
+            <span class="block text-[#9ACF84] mb-1" style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:700">48h</span>
+            <span class="text-white/30" style="font-family:'Inter',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.05em">Response Time</span>
           </div>
           <div class="p-6 rounded-xl border border-white/5 bg-white/[0.02] hover:border-[#9ACF84]/15 transition-all duration-300 reveal delay-4">
             <span class="block text-[#9ACF84] mb-1" style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:700">4</span>
@@ -137,13 +147,13 @@ const breadcrumbSchema = {
       <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-[#9ACF84]/5 rounded-full blur-[160px] pointer-events-none"></div>
       <div class="relative z-10 max-w-3xl mx-auto text-center">
         <h2 class="text-[#0a0a0f] mb-6 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:600;line-height:1.2">
-          Ready to start your <span class="text-[#9ACF84]">recovery journey?</span>
+          Not sure what your <span class="text-[#9ACF84]">options are?</span>
         </h2>
         <p class="text-[#0a0a0f]/55 mb-8 reveal" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-          Contact us today for a free, confidential consultation. Our team will assess your case and advise on the best course of action for recovering your funds.
+          Request a free, confidential case assessment. We will review what happened and tell you honestly whether we believe we can help.
         </p>
         <div class="reveal">
-          <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-7 py-3.5 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">
+          <a href="#consultation" class="inline-flex items-center gap-2 px-7 py-3.5 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors btn-scale" style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600">
             Free Consultation
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>

@@ -1,80 +1,127 @@
 ---
-import { BASE as base, url } from '../lib/site';
+import { url, KVK_URL, JUSTIS_URL } from '../lib/site';
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
 import Footer from '../components/Footer.astro';
+
+const siteUrl = "https://scamhelp.net";
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
+    { "@type": "ListItem", "position": 2, "name": "Terms and Conditions", "item": `${siteUrl}/terms-and-conditions/` },
+  ],
+};
 ---
 
-<Layout title="Terms and Conditions — ScamHelp" description="General Terms and Conditions of Transparent Business Solutions B.V. (DBA Scam Help) governing all transactions, contracts, and business relationships.">
+<Layout title="Terms and Conditions, ScamHelp" description="The terms under which Transparent Business Solutions B.V. (ScamHelp) provides its investigation and complaint support services." schema={[breadcrumbSchema]}>
   <Navbar />
   <main class="min-h-screen bg-[#0a0a0f] pt-32 pb-20 px-6">
     <article class="max-w-3xl mx-auto">
 
       <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Legal</span>
-      <h1 class="text-white mb-12" style="font-family:'Montserrat',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.15">Terms and <span class="text-[#9ACF84]">Conditions</span></h1>
+      <h1 class="text-white mb-4" style="font-family:'Montserrat',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.15">Terms and <span class="text-[#9ACF84]">Conditions</span></h1>
+      <p class="text-white/40 mb-12" style="font-family:'Inter',sans-serif;font-size:14px">Last updated: November 2026</p>
 
       <div class="legal-content">
 
-        <h3>GENERAL TERMS AND CONDITIONS</h3>
-        <h4>Transparent Business Solutions B.V. (DBA Scam Help)</h4>
+        <h2>1. Who we are</h2>
+        <p>ScamHelp is a registered trade name of Transparent Business Solutions B.V. ("TBS", "ScamHelp", "we", "us"), a private investigation agency licensed by the Dutch Ministry of Justice and Security (licence POB 07373, <a href={JUSTIS_URL} target="_blank" rel="noopener noreferrer">Justis WPBR register</a>) and registered with the Netherlands Chamber of Commerce under <a href={KVK_URL} target="_blank" rel="noopener noreferrer">KvK 78091624</a>. Our registered office is at Kalvermarkt 53, 2511 CB The Hague, Netherlands. These Terms and Conditions apply to all services we provide under the ScamHelp name.</p>
 
-        <p>The General Terms and Conditions shall apply to any and all transactions, contracts, and business relationships with Transparent Business Solutions B.V. (DBA Scam Help), with its corporate seat in Kalvermarkt 53, 2511 CB, The Hague, The Kingdom of the Netherlands in particular including all consultancy services proposed or provided by the Consultant, which are delivered entirely or partially to the Client.</p>
-
-        <p>The following General Terms and Conditions apply to Users of the Website and Clients of the Services. User/Client should read the entire User Agreement carefully before using the Website or Services.</p>
-
-        <h2>1. Definitions</h2>
-        <p>In these General Terms and Conditions, the following definitions are applicable: "Client" means the person, company, or organization body who is the intended recipient of the Service;</p>
+        <h2>2. Key terms</h2>
+        <p>In these Terms and Conditions:</p>
         <ul>
-          <li>"Confidential Information" means any information related to the Engagement disclosed by the Client to the Consultant and by the Consultant to the Client, respectively, either directly or indirectly. Confidential Information may include, by way of example but without limitation, products, specifications, formulae, equipment, formulas, models, employee interviews, records, quality monitoring schemes/programs, training materials, business strategies, customer lists, know-how, drawings, pricing information, inventions, ideas, and other information, or its potential use, that is owned by or in possession of the Client and the Consultant, respectively;</li>
-          <li>"Client" means the user of these Terms and Conditions;</li>
-          <li>"Contract" means the contract between the Client and the Consultant which defines the scope of the Engagement and the services to be rendered by the Consultant, as well as the fee schedule for said services;</li>
-          <li>"The Engagement" means any agreement, in whatever form, reached between the Consultant and the Client pursuant to which the Consultant agrees to render services to the Client in exchange for a fee plus costs;</li>
-          <li>"Force Majeure" means any cause beyond the reasonable control of the affected party, including, but not limited to, any act of God, war, riots, acts of the public enemy, fires, strikes, labor disputes, accidents, or any act in consequence of compliance with any order of any government or governmental authority;</li>
-          <li>"Project" means the services to be provided by the Consultant to the Client as specified in the Service Agreement;</li>
-          <li>"Subcontractor" means either an affiliate or subsidiary of the Consultant, or an independent contractor, respectively, which is qualified to perform the applicable services as contemplated by the "the Services Agreement", and has been contracted by the Consultant accordingly, as evidenced by an agreement in writing.</li>
+          <li><strong>Client</strong> means the individual, company or organisation that signs a Service Agreement with us and receives the Services.</li>
+          <li><strong>Service Agreement</strong> means the written agreement signed by us and the Client, setting out the scope of the Services, the fees, the deliverables and the applicable terms.</li>
+          <li><strong>Services</strong> means the investigation, tracing, advisory and related services described in the Service Agreement.</li>
+          <li><strong>Personnel</strong> means the employees, investigators, case managers, sales and support staff, and contractors who work on our behalf.</li>
+          <li><strong>Website</strong> means <a href="https://scamhelp.net">https://scamhelp.net</a>.</li>
+          <li><strong>Visitor</strong> means anyone who uses the Website without having signed a Service Agreement.</li>
         </ul>
 
-        <h2>2. General</h2>
-        <p>2.1 These General Terms and Conditions govern the provision of all services from or on behalf of the Consultant to the Client and apply to all legal relationships between the Consultant and the Client.</p>
+        <h2>3. When these terms apply</h2>
+        <p>These Terms and Conditions apply to every Service Agreement and to all dealings between us and the Client relating to the Services. Visitors who only browse the Website are covered by our <a href={url('/privacy-policy/')}>Privacy Policy</a>, which also explains our use of cookies. If these Terms and Conditions and a signed Service Agreement say different things, the Service Agreement applies.</p>
 
-        <h2>3. Performance of the Project</h2>
-        <p>3.1 The Consultant shall determine the manner in which and the person by whom the Engagement will be carried out, taking into account, as far as is feasible, the reasonable requests expressed by the Client.</p>
-        <p>3.2 The Consultant shall complete the Project with reasonable skill, care, and diligence in accordance with the Contract.</p>
-        <p>3.3 The Client hereby accepts that the time schedule allocated for the performance of an Engagement may be subject to change in case of an amendment to the Engagement and/or the services to be provided thereunder after the conclusion of the Engagement.</p>
-        <p>3.4 In case of any change of circumstances under which the Engagement is to be performed which cannot be attributed to the Consultant, the Consultant may make any such amendments to the Engagement as it deems necessary to adhere to the agreed quality standard and specifications. Any costs arising from or related to this change of circumstances will be fully borne by the client.</p>
-        <p>3.5 The Consultant may, at its discretion and, where possible, in consultation with the Client, replace the person or persons charged with performing the Engagement, if the Consultant believes that such replacement would benefit the performance of the Engagement.</p>
+        <h2>4. What we do, and what we don't do</h2>
+        <p>We provide private investigation and financial forensics services for victims of online fraud. This includes reviewing the case, researching the people and companies involved through corporate, credit and media sources, tracing cryptocurrency with professional blockchain investigation software, preparing Crypto Tracing Reports, and helping clients prepare complaints to banks, exchanges, payment providers, financial ombudsman services and regulators.</p>
+        <p>We do not provide legal services. If a case requires legal proceedings, the Client may instruct an independent law firm, which agrees and invoices its own fees.</p>
+        <p>We commit to carrying out the Services with care; we do not commit to a particular result. Outcomes vary by case and are not guaranteed. They depend on factors such as jurisdiction, the platform or institution involved, how long ago the fraud happened, and the cooperation of banks, exchanges, regulators and other third parties.</p>
 
-        <h2>4. Subcontractors</h2>
-        <p>The Consultant shall be free to involve Subcontractors, availing of specific expertise, in the performance of the Project, provided that the Consultant shall have these third parties enter into confidentiality obligations similar to the confidentiality obligations applicable to the Consultant. If requested by the Client, the Consultant shall identify these Subcontractors, specifying in each case their specific expertise.</p>
+        <h2>5. How we carry out the Services</h2>
+        <p>We perform the Services with reasonable skill, care and diligence, in line with generally accepted industry standards and all applicable laws and regulations.</p>
+        <p>We decide which Personnel work on a case and take the Client's reasonable wishes into account where we can. We may change the Personnel assigned to a case if we believe this will benefit the work.</p>
+        <p>We may involve subcontractors with specialist expertise. They are bound by confidentiality obligations equivalent to ours, and we pay their costs. On request, we will tell the Client which subcontractors are involved and what expertise they bring.</p>
+        <p>We deliver the Crypto Tracing Report within 60 days of signing the Service Agreement. If a complex case needs more time, we inform the Client and set a new deadline. Timelines may also change if the scope of the Services changes after signing.</p>
+        <p>If circumstances outside our control require changes to the Services, we will inform the Client. Any extra costs that result are only charged with the Client's prior written approval.</p>
 
-        <h2>5. Client's Obligation</h2>
-        <p>5.1 The Client shall at all times duly make available to the Consultant all information and documents that the Consultant deems necessary to be able to carry out the Engagement correctly, in the specified form and manner. Also, the Client shall provide all cooperation required for the proper and timely performance of the Engagement.</p>
-        <p>5.2 The Client shall duly inform the Consultant of any facts and circumstances that may be relevant in connection with the execution of the Engagement.</p>
-        <p>5.3 The Client shall guarantee the correctness, completeness, and reliability of any information provided to the Consultant.</p>
+        <h2>6. Professional names</h2>
+        <p>To protect their safety and privacy, some client-facing Personnel, such as sales and support staff, may use professional names instead of their legal names. This does not change the Client's rights or our obligations. All Services are provided by, and all Service Agreements are made with, Transparent Business Solutions B.V., and all payments are made to Transparent Business Solutions B.V. only. Official communication from ScamHelp comes only from @scamhelp.net email addresses. To check whether someone represents us, contact <a href="mailto:support@scamhelp.net">support@scamhelp.net</a>.</p>
 
-        <h2>6. Fees and Expenses</h2>
-        <p>6.1 The Client shall pay the Consultant fees at the rate specified in the Service Agreement.</p>
+        <h2>7. Your responsibilities as a Client</h2>
+        <p>The Client agrees to:</p>
+        <ul>
+          <li>send us all information and documents needed for the case, including transaction IDs, wallet addresses and other evidence, within 30 days of signing the Service Agreement;</li>
+          <li>make sure all information provided is correct, complete and truthful;</li>
+          <li>tell us promptly about anything relevant to the case, including any contact from the fraudsters, banks, exchanges or authorities;</li>
+          <li>not instruct another recovery service on the same matter during the Service Agreement without first notifying us in writing; and</li>
+          <li>tell us promptly about any funds that are returned or recovered in connection with the case.</li>
+        </ul>
 
-        <h2>7. Confidentiality</h2>
-        <p>7.1 In the course of performing Services, the parties recognize that the Company may come in contact with or become familiar with information which the Client or its subsidiaries or affiliates may consider confidential. This information may include but is not limited to, information pertaining to the Client's personal data. The Company acknowledges that in connection with the Services rendered hereunder the Company will be afforded access to Confidential Information and that public disclosure of such Confidential Information could have an adverse effect on the Client. The Company covenants that, during and following the term of the Contract, the Company will hold in confidence all Confidential Information and will not disclose it to any person or use it other than for the of providing the Services hereunder, except with the specific prior written consent of the Client and/or if the information became public knowledge.</p>
-        <p>7.2 Any information or document received by the Client from the Company in the context of the performance of the contract is identified as confidential. The Client will hold all Company Confidential Information in confidence and will not use, copy, publish, summarize, disclose any such information to any third party or use it other than for the of receiving the Services hereunder, except with the specific prior written consent of the Company.</p>
-        <p>7.3 The provisions of this Article shall apply during the term of the Contract and for a period of five (5) years thereafter.</p>
-        <p>7.4 Due to the nature of the business, the Consultant's customer service representatives (sales agents) can use pseudo/alias names in order to protect their identity.</p>
+        <h2>8. Fees and payment</h2>
+        <p>Our fees are set out in the Service Agreement and summarised on our <a href={url('/fees/')}>Fees page</a>. Depending on the case, they may include a retainer, fees for additional services, and a success-based commission on funds actually returned to the Client. All prices exclude VAT, which is added where applicable.</p>
+        <p>The success-based commission is due within 15 days of the Client receiving returned funds. If no funds are returned, no commission is due. If the Client does not tell us about returned funds, we may claim the commission due and any further damages under the Service Agreement.</p>
+        <p>Payments are made by credit card, debit card or bank wire transfer to Transparent Business Solutions B.V. only. Additional expenses are only incurred with the Client's prior written approval.</p>
+        <p>We will never ask the Client to pay a "release fee", "unlocking fee", tax, withdrawal charge or any other payment to receive recovered funds.</p>
 
-        <h2>8. Disclaimer</h2>
-        <p>8.1 The Consultant, and any person put forward by the Consultant to perform the Project, shall not be liable if the services provided or the results generated by him in the Project are not absolutely correct, nor does the Consultant, or any person put forward by the Consultant to perform the Project, warrant, either expressed or implied, that the performance by him of the Project will not infringe upon intellectual property rights of any third party.</p>
+        <h2>9. Duration and termination</h2>
+        <p>The Service Agreement lasts six months from signing, unless it states otherwise. We may end the Service Agreement if:</p>
+        <ul>
+          <li>the Client does not send the required information within 30 days of signing;</li>
+          <li>the Client breaches the Service Agreement or these Terms and Conditions and does not put this right within 30 days of notice, or immediately if the breach cannot be put right;</li>
+          <li>an invoice is not paid within its payment term; or</li>
+          <li>we have reason to believe the Services are being used in connection with a breach of the law.</li>
+        </ul>
 
-        <h2>9. Governing Law and Jurisdiction</h2>
-        <p>9.1 All disputes which cannot be settled amicably shall be referred to the applicable courts in The Netherlands, where parties consent to those courts' exclusive jurisdiction.</p>
-        <p>9.2 This Agreement is governed by and interpreted in accordance with the laws of The Netherlands.</p>
+        <h2>10. Cancellation and refunds</h2>
+        <p>The first consultation is free, and no payment is taken before a Service Agreement is signed.</p>
+        <p>Because the Services are time-sensitive, we start work as soon as the Service Agreement is signed, at the Client's express request. The retainer and any fees for additional services are therefore non-refundable once the Service Agreement is signed, whatever the outcome of the case. By signing, the Client confirms that the statutory right of withdrawal no longer applies once work has begun.</p>
+        <p>The success-based commission is only charged on funds actually returned to the Client and is not refundable once paid. Fees paid before the Service Agreement ends under section 9 are not refunded.</p>
+        <p>If the Client is charged twice, charged an amount different from the Service Agreement, or charged without a signed Service Agreement, we refund the incorrect amount in full to the original payment method once the error is confirmed.</p>
+        <p>We ask Clients to contact us at <a href="mailto:support@scamhelp.net">support@scamhelp.net</a> before opening a dispute or chargeback with their bank or card provider, so we can resolve the matter directly.</p>
+        <p>Nothing in these Terms and Conditions limits any mandatory rights the Client has under consumer protection law. Full details are in our <a href={url('/refund-policy/')}>Refund Policy</a>.</p>
 
-        <h2>10. Force Majeure</h2>
-        <p>Neither party shall be liable in any way for any damage, loss, cost, or expense arising out of or in connection with a Force Majeure event. Upon the occurrence of any Force Majeure Event, the party suffering thereby shall promptly inform the other party by written notice thereof specifying the cause of the Force Majeure event and how it will affect its performance.</p>
+        <h2>11. Confidentiality</h2>
+        <p>We keep all information the Client gives us confidential and use it only to carry out the Services, unless the Client agrees otherwise in writing, the information is already public, or the law requires us to disclose it.</p>
+        <p>Reports, documents and other information we provide to the Client are our confidential work products. The Client may not publish, copy or share them without our prior written consent, except with the Client's own legal advisers, or with banks, exchanges, regulators or authorities as part of pursuing the Client's case.</p>
+        <p>If either party is required by law to disclose confidential information, it will tell the other party promptly, where allowed, so that protective steps can be taken.</p>
+        <p>These obligations continue during the Service Agreement and for five years after it ends.</p>
 
-        <p>For questions, product information, or information about Terms & Conditions, and the website itself, please contact the Customer Support Department at <a href="mailto:support@scamhelp.net">support@scamhelp.net</a>.</p>
+        <h2>12. Personal data</h2>
+        <p>We process personal data in line with the EU General Data Protection Regulation (GDPR) and other applicable data protection laws, including the UK Data Protection Act 2018 and the California Consumer Privacy Act (CCPA) where they apply. Special categories of personal data are only processed where strictly necessary and under the conditions those laws set. Our <a href={url('/privacy-policy/')}>Privacy Policy</a> and <a href={url('/data-protection-addendum/')}>Data Protection Addendum</a> explain this in detail, under the oversight of our Data Protection Officer.</p>
 
-        <p class="legal-disclaimer"><em>Residents in the United Kingdom: Scam Help does not assist and/or advise consumers with complaints in relation to mis-sold investment products that have been purchased from firms regulated by the UK Prudential Regulation Authority (PRA) and/or the UK Financial Conduct Authority (FCA). Scam Help does not offer services to consumers in Great Britain in relation to activities regulated by the UK Financial Conduct Authority (FCA).</em></p>
+        <h2>13. Liability</h2>
+        <p>We are not liable for loss or damage arising from the Services, except in cases of gross negligence, wilful misconduct or fraud. Where we are liable, our liability is limited to the fees paid or payable under the Service Agreement.</p>
+        <p>These limits do not apply where the Client is a consumer, to the extent the law does not allow them.</p>
+        <p>We are not liable for failing to meet our obligations because of events beyond our reasonable control, such as natural disasters, actions of civil or military authorities, war, riots, strikes or fire.</p>
+        <p>Our reports and findings rely partly on third-party sources and data providers. We use sources and methods we consider reliable, but we cannot guarantee that third-party data is complete or free of errors.</p>
+
+        <h2>14. Complaints</h2>
+        <p>Questions or complaints about the Services or these Terms and Conditions can be sent to <a href="mailto:support@scamhelp.net">support@scamhelp.net</a>. We aim to reply within 5 business days.</p>
+
+        <h2>15. Changes to these terms</h2>
+        <p>We may update these Terms and Conditions from time to time. The version in force when a Service Agreement is signed applies to that agreement, unless the Client agrees otherwise in writing.</p>
+
+        <h2>16. Governing law and courts</h2>
+        <p>These Terms and Conditions and all Service Agreements are governed by Dutch law. Disputes are brought before the competent court in The Hague, the Netherlands. Where the Client is a consumer, the court that has jurisdiction under Dutch law applies.</p>
+
+        <h2>17. Contact</h2>
+        <p>
+          <strong>Transparent Business Solutions B.V. (ScamHelp)</strong><br />
+          Kalvermarkt 53, 2511 CB The Hague, Netherlands<br />
+          <a href="mailto:support@scamhelp.net">support@scamhelp.net</a> · <a href={url('/contact-us/')}>Contact us</a>
+        </p>
 
       </div>
 
@@ -89,20 +136,6 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  .legal-content h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 0.5rem;
-  }
-  .legal-content h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 1.5rem;
-  }
   .legal-content h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
@@ -141,12 +174,5 @@ import Footer from '../components/Footer.astro';
   }
   .legal-content strong {
     color: rgba(255,255,255,0.7);
-  }
-  .legal-disclaimer {
-    margin-top: 2rem;
-    padding: 1.25rem;
-    border-left: 3px solid rgba(154,207,132,0.3);
-    background: rgba(255,255,255,0.02);
-    border-radius: 0 0.5rem 0.5rem 0;
   }
 </style>

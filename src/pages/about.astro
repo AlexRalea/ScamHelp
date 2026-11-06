@@ -4,8 +4,9 @@ import Navbar from '../components/Navbar.astro';
 import ContactForm from '../components/ContactForm.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
 import Footer from '../components/Footer.astro';
+import OutcomesNote from '../components/OutcomesNote.astro';
 
-import { BASE as base, url } from '../lib/site';
+import { BASE as base, url, KVK_URL, JUSTIS_URL } from '../lib/site';
 
 const siteUrl = "https://scamhelp.net";
 const breadcrumbSchema = {
@@ -19,21 +20,22 @@ const breadcrumbSchema = {
 
 const whyUsFeatures = [
   {
-    title: "Best Industry",
-    highlight: "leaders",
-    description: "Our team consists of international AML and law experts that are capable of solving cases of any complexity on a global scale.",
-    iconPath: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zm7 0a4 4 0 100 8 4 4 0 000-8m6 14v-2a4 4 0 00-3-3.87",
+    title: "Licensed and",
+    highlight: "verifiable",
+    description: "We are a licensed Dutch private investigation agency. Our licence and company registration can be checked in public registers.",
+    iconPath: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
   },
   {
-    title: "Quick",
-    highlight: "Processing",
-    description: "Scam Help's clients gain from our team's vast knowledge and expertise. We present your case in front of the bank or other financial institutions involved in the most professional way to reduce processing time and increase your chance for a successful resolution.",
-    iconPath: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
+    title: "Clear fees,",
+    highlight: "in writing",
+    description: "Your first consultation is free. Any fees are set out in a written agreement before work begins.",
+    link: { text: "Our Fees", href: url('/fees/') },
+    iconPath: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
   },
   {
-    title: "Tailor-made",
-    highlight: "dispute resolution",
-    description: "We practice an individual approach to each client that guarantees thorough analysis of every case in order to provide our clients with the best solution available.",
+    title: "Honest",
+    highlight: "assessments",
+    description: "If we do not believe we can help, we tell you so at the consultation stage, and you pay nothing.",
     iconPath: "M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z",
   },
 ];
@@ -42,25 +44,46 @@ const helpCards = [
   {
     title: "Forex",
     highlight: "frauds",
-    description: "In the dynamic foreign exchange (forex) market, characterized by constant price fluctuations, institutions, companies, and individuals can reap significant profits. Unfortunately, forex fraud is on the rise, presenting a considerable challenge without guaranteed preventive measures.",
+    description: "Forex fraud usually involves unregulated brokers or trading platforms that promise high returns, show fake profits and then block withdrawals. We investigate how your payments were made and which institutions processed them.",
     iconPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
   },
   {
     title: "Crypto",
     highlight: "scams",
-    description: "Cryptocurrency scams pose a significant threat in the digital realm. Whether you've fallen victim to credit/debit card scams, online dating fraud, online casino scams, crypto-currency schemes, CFD trading fraud, or any form of banking deception, there are legitimate solutions and strategies to reclaim what is rightfully yours.",
+    description: "Crypto investment and fake-exchange scams move funds quickly across wallets and exchanges. We trace those movements and identify the exchanges and payment providers involved, so that complaints can be directed to the right institutions.",
     iconPath: "M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z",
   },
   {
     title: "Other",
     highlight: "scams",
-    description: "Whether you've encountered credit/debit card scams, fallen prey to online dating schemes, been swindled by online casino fraud, entangled in CFD trading deceit, or experienced any other form of banking fraud, rest assured there is a legitimate solution and strategy to reclaim what is rightfully yours.",
+    description: "We also investigate romance scams, unlicensed online casinos, CFD trading fraud and other online fraud paid by card, bank transfer or crypto, and assess which dispute or complaint options apply.",
     iconPath: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z",
+  },
+];
+
+const companyRegistration = [
+  { item: "Trade name", value: "ScamHelp (registered with the KvK)", href: KVK_URL, external: true },
+  { item: "Legal entity", value: "Transparent Business Solutions B.V.", href: KVK_URL, external: true },
+  { item: "KvK number", value: "78091624", href: KVK_URL, external: true },
+  { item: "Licence", value: "POB 07373, Dutch Ministry of Justice and Security (Wpbr)", href: JUSTIS_URL, external: true },
+  { item: "Registered office", value: "Kalvermarkt 53, 2511 CB The Hague, Netherlands", href: url('/contact-us/'), external: false },
+];
+
+const scopeCards = [
+  {
+    title: "What we do",
+    description: "We investigate online investment, crypto and banking fraud. We trace transactions, identify the banks, exchanges and payment providers involved, and prepare evidence packages and complaints for banks, card issuers, financial ombudsman services and regulators.",
+    iconPath: "M5 13l4 4L19 7",
+  },
+  {
+    title: "What we don't do",
+    description: "We do not guarantee the return of funds. We do not provide legal services, financial advice or investments. We do not \"hack\" or reverse transactions. We never ask for \"release fees\", taxes or charges to unlock funds; anyone who does is running a recovery scam.",
+    iconPath: "M6 18L18 6M6 6l12 12",
   },
 ];
 ---
 
-<Layout title="About Us — ScamHelp" description="Scam Help is a funds recovery company based in the Netherlands. Our dedicated team of IT forensic analysts, anti-fraud specialists, and case coordinators help victims recover lost assets.">
+<Layout title="About ScamHelp: Licensed Fraud Investigation, The Hague" description="ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private investigation agency licensed by the Dutch Ministry of Justice and Security. Free case assessment.">
   <Navbar />
   <main class="bg-[#0a0a0f]">
 
@@ -76,10 +99,10 @@ const helpCards = [
       <div class="max-w-3xl mx-auto relative z-[1]">
         <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block reveal" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">About Us</span>
         <h1 class="text-white mb-5 reveal" style="font-family:'Montserrat',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:700;line-height:1.1">
-          Reclaim Your <span class="text-[#9ACF84]">Lost Assets!</span>
+          Licensed fraud investigation, <span class="text-[#9ACF84]">explained honestly.</span>
         </h1>
         <p class="text-white/40 max-w-xl mx-auto reveal" style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7">
-          We help victims of online fraud recover what's rightfully theirs through expert guidance and tailored recovery strategies.
+          We help victims of online fraud understand what happened to their money, trace where it went, and prepare the evidence that banks, exchanges and regulators need to review their case.
         </p>
       </div>
     </section>
@@ -92,23 +115,41 @@ const helpCards = [
         <div class="reveal">
           <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-4 block" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Our Story</span>
           <h2 class="text-white mb-6" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-            Who we <span class="text-[#9ACF84]">are?</span>
+            Who we <span class="text-[#9ACF84]">are</span>
           </h2>
           <p class="text-white/45 mb-5" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            Scam Help <span class="text-[#9ACF84]/70">(registered in The Netherlands under Transparent Business Solutions B.V., Company Number 78091624)</span> is a funds recovery company based in the Netherlands. Our dedicated team of professional IT forensic analysts, anti-fraud specialists, and case coordinators have vast working knowledge in online trading scams and other types of fraud.
+            ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private investigation agency based in The Hague and licensed by the Dutch Ministry of Justice and Security <span class="text-[#9ACF84]/70">(licence POB 07373, KvK 78091624)</span>. Our team of fraud investigators, financial forensic analysts and case managers works on online investment, cryptocurrency and banking fraud.
           </p>
           <p class="text-white/45 mb-8" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            We assist clients globally to submit disputes against fraudulent entities. Scam Help guides clients with high-end tailor-made solutions with global industry-leading partners.
+            We help clients worldwide prepare disputes and complaints against fraudulent merchants and platforms, and work with independent investigators and specialists where a case requires it.
           </p>
-          <a href="https://www.kvk.nl/bestellen/#/78091624000045743274" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
-            Company Registration
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
+
+          <!-- Company Registration -->
+          <div class="rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden">
+            <table class="w-full text-left" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.6">
+              <caption class="px-5 pt-4 pb-3 text-left text-[#9ACF84] uppercase tracking-[0.2em]" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">Company Registration</caption>
+              <tbody>
+                {companyRegistration.map((row) => (
+                  <tr class="border-t border-white/5">
+                    <th scope="row" class="px-5 py-3 align-top text-white/40 whitespace-nowrap" style="font-weight:500">{row.item}</th>
+                    <td class="px-5 py-3 align-top">
+                      <a
+                        href={row.href}
+                        target={row.external ? '_blank' : undefined}
+                        rel={row.external ? 'noopener noreferrer' : undefined}
+                        class="text-white/70 underline decoration-white/15 underline-offset-4 hover:text-[#9ACF84] hover:decoration-[#9ACF84]/40 transition-colors"
+                      >{row.value}</a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <!-- Image -->
         <div class="reveal from-right rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden" style="aspect-ratio: 1200 / 792;">
-          <img src={`${base}/who_we_are_image.webp`} alt="Who we are at ScamHelp" class="w-full h-full object-cover" loading="lazy" />
+          <img src={`${base}/who_we_are_image.webp`} alt="" class="w-full h-full object-cover" loading="lazy" />
         </div>
 
       </div>
@@ -145,7 +186,7 @@ const helpCards = [
         </div>
 
         <div class="text-center mt-10 reveal">
-          <a href={`${base}/scams`} class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[#0a0a0f]/10 text-[#0a0a0f]/60 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 transition-all" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+          <a href={url('/scams/')} class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-[#0a0a0f]/10 text-[#0a0a0f]/60 hover:text-[#9ACF84] hover:border-[#9ACF84]/30 transition-all" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
             Learn More
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -164,7 +205,7 @@ const helpCards = [
             Why <span class="text-[#9ACF84]">us?</span>
           </h2>
           <p class="text-[#0a0a0f]/50 max-w-3xl mx-auto" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
-            Scam Help employs existing regulations, consumer rights, and tailored solutions for a top-tier recovery service. Upon confirming your valid request and fraud occurrence, you'll receive guidance to initiate the refund process. We collaborate on the best action plan to successfully recover your funds, providing a free consultation to kickstart your case.
+            Every case starts with a free consultation. We review what happened, check which consumer and payment rights may apply, and tell you honestly whether we believe we can help. If you proceed, we agree the scope and fees in writing before any work begins.
           </p>
         </div>
 
@@ -173,7 +214,7 @@ const helpCards = [
 
           <!-- Image -->
           <div class="reveal rounded-2xl border border-[#e8e8e8] bg-[#f8f8f8] overflow-hidden order-2 lg:order-1" style="aspect-ratio: 1200 / 788;">
-            <img src={`${base}/why_us_image.webp`} alt="Why choose ScamHelp" class="w-full h-full object-cover" loading="lazy" />
+            <img src={`${base}/why_us_image.webp`} alt="" class="w-full h-full object-cover" loading="lazy" />
           </div>
 
           <!-- Features list -->
@@ -194,13 +235,18 @@ const helpCards = [
                   <h3 class="text-[#0a0a0f] mb-2" style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:600">
                     {feature.title} <span class="text-[#9ACF84]">{feature.highlight}</span>
                   </h3>
-                  <p class="card-desc text-[#0a0a0f]/50" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">{feature.description}</p>
+                  <p class="card-desc text-[#0a0a0f]/50" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">
+                    {feature.description}
+                    {feature.link && (
+                      <Fragment>{' '}See <a href={feature.link.href} class="text-[#6BA055] underline underline-offset-4 hover:text-[#9ACF84] transition-colors">{feature.link.text}</a>.</Fragment>
+                    )}
+                  </p>
                 </div>
               </div>
             ))}
 
             <div class="reveal delay-4 pl-17">
-              <a href={`${base}/contact-us`} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
+              <a href={url('/contact-us/')} class="inline-flex items-center gap-2 px-6 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600">
                 Contact Us
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
               </a>
@@ -208,6 +254,37 @@ const helpCards = [
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- What we do and what we don't do (dark) -->
+    <section class="py-12 md:py-14 px-6 relative overflow-hidden">
+      <div class="absolute left-0 top-1/4 w-[400px] h-[400px] bg-[#9ACF84]/3 rounded-full blur-[180px] pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-5xl mx-auto">
+        <div class="text-center mb-10 reveal">
+          <h2 class="text-white mb-4" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
+            What we do and <span class="text-[#9ACF84]">what we don't do</span>
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          {scopeCards.map((card, i) => (
+            <div class={`reveal delay-${i + 1} p-7 rounded-2xl border border-white/5 bg-white/[0.04] backdrop-blur-md hover:bg-white/[0.07] hover:border-[#9ACF84]/15 transition-all duration-300`}>
+              <div class="flex items-center gap-3 mb-3">
+                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-[#9ACF84] flex items-center justify-center">
+                  <svg class="w-5 h-5 text-[#0a0a0f]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={card.iconPath} />
+                  </svg>
+                </div>
+                <h3 class="text-white" style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:600">{card.title}</h3>
+              </div>
+              <p class="text-white/45" style="font-family:'Inter',sans-serif;font-size:14px;line-height:1.75">{card.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <OutcomesNote class="mt-10 text-center reveal" />
       </div>
     </section>
 
