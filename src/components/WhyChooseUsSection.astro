@@ -1,23 +1,34 @@
 ---
+import { url } from '../lib/site';
 const { BASE_URL } = import.meta.env;
-const reasons = [
+
+type Reason = {
+  title: string;
+  description: string;
+  link?: { before: string; text: string; href: string; after: string };
+  iconPath: string;
+};
+
+// Cards 1-3: approved "Why us?" card texts from the About Us page (Part 2).
+const reasons: Reason[] = [
   {
-    title: "Top Industry Leaders",
-    description: "Our global team of AML and law experts excel in resolving complex cases worldwide and provide help for fraud victims.",
-    // Users icon
-    iconPath: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zm7 0a4 4 0 100 8 4 4 0 000-8m6 14v-2a4 4 0 00-3-3.87",
+    title: "Licensed and verifiable",
+    description: "We are a licensed Dutch private investigation agency. Our licence and company registration can be checked in public registers.",
+    // BadgeCheck icon
+    iconPath: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z",
   },
   {
-    title: "Swift Solutions",
-    description: "Leverage our online Scam Help's extensive knowledge for prompt case processing and resolution.",
-    // Zap icon
-    iconPath: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
+    title: "Clear fees, in writing",
+    description: "Your first consultation is free. Any fees are set out in a written agreement before work begins.",
+    link: { before: " See ", text: "Our Fees", href: url('/fees/'), after: "." },
+    // Document icon
+    iconPath: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
   },
   {
-    title: "Customized dispute resolution",
-    description: "Experience personalized attention with our tailored approach, ensuring in-depth analysis and effective solutions.",
-    // Settings icon
-    iconPath: "M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z",
+    title: "Honest assessments",
+    description: "If we do not believe we can help, we tell you so at the consultation stage, and you pay nothing.",
+    // Chat icon
+    iconPath: "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z",
   },
   {
     title: "Diverse Scam Expertise",
@@ -75,7 +86,9 @@ const reasons = [
               </h3>
             </div>
             <p class="text-white/40" style="font-size:14px;line-height:1.65">
-              {reason.description}
+              {reason.description}{reason.link && (
+                <>{reason.link.before}<a href={reason.link.href} class="text-[#9ACF84] hover:underline">{reason.link.text}</a>{reason.link.after}</>
+              )}
             </p>
           </div>
         </div>
@@ -85,16 +98,13 @@ const reasons = [
     <!-- Process text + CTA -->
     <div id="why-cta-box" class="reveal delay-5 mt-12 p-8 rounded-xl bg-white/[0.04] backdrop-blur-md border border-white/5 cursor-pointer lg:cursor-default">
       <p id="why-cta-text" class="text-white/35 mb-6" style="font-size:14px;line-height:1.85">
-        Scam Help leverages regulations and consumer rights for professional recovery services.
-        Upon validating your request and confirming fraud, our online fraud help guides you through
-        the refund process, deciding on the best recovery approach together. Benefit from a free
-        consultation to initiate your case, with our team representing you before the fraudulent
-        company, banks, regulators, and relevant entities. Our global partners, comprising former
-        law enforcement officers and banking specialists, bring unique anti-fraud solutions with
-        the highest ethical standards, ensuring optimal asset recovery for our clients.
+        ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private
+        investigation agency licensed by the Dutch Ministry of Justice and Security. We assess every
+        case honestly before any fees are agreed, set out our fees in writing, and keep clients
+        informed at every stage.
       </p>
       <a
-        href="#consultation"
+        href={url('/contact-us/')}
         class="btn-scale inline-flex items-center gap-2 px-7 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors duration-200"
         style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600"
       >

@@ -1,30 +1,37 @@
 ---
+import { url } from '../lib/site';
+
+// Service names and descriptions: approved texts from the Services hub (Part 2).
 const services = [
   {
-    title: "Fund Recovery",
-    description: "Our specialized team works to trace and recover your lost funds through strategic legal and financial channels.",
-    features: ["Dispute Filing", "Bank Chargebacks", "Legal Proceedings"],
-    // Recover arrow icon
+    title: "Payment Dispute Support",
+    href: url('/services/payment-dispute-support/'),
+    description: "We help victims of online fraud prepare chargeback, recall and complaint cases for their bank or card issuer, with the evidence those institutions require.",
+    features: ["Dispute Preparation", "Chargebacks and Recalls", "Bank Complaints"],
+    // Arrows icon
     iconPath: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
   },
   {
     title: "Crypto Tracing",
-    description: "Using advanced blockchain analytics, we trace cryptocurrency transactions to identify fraudulent actors.",
+    href: url('/services/crypto-tracing/'),
+    description: "Blockchain analysis to trace cryptocurrency transactions, identify the wallets involved and locate the exchanges where funds were cashed out.",
     features: ["Blockchain Analysis", "Wallet Identification", "Transaction Mapping"],
     // Activity/waveform icon
     iconPath: "M22 12h-4l-3 9L9 3l-3 9H2",
   },
   {
-    title: "Crypto Investigation",
-    description: "Deep-dive digital forensics to uncover fraud networks and gather evidence for legal proceedings.",
-    features: ["Digital Forensics", "Evidence Collection", "Expert Testimony"],
+    title: "Crypto Fraud Investigation",
+    href: url('/services/crypto-fraud-investigation/'),
+    description: "Forensic investigation of crypto fraud, resulting in a written report you can share with your bank, exchange, lawyer or the police.",
+    features: ["Digital Forensics", "Evidence Collection", "Written Report"],
     // ShieldCheck icon
     iconPath: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z",
   },
   {
-    title: "Dispute Resolution",
-    description: "Expert mediation and legal dispute resolution with financial institutions and regulatory bodies.",
-    features: ["Regulatory Complaints", "Mediation Support", "Legal Advocacy"],
+    title: "Complaint and Escalation Support",
+    href: url('/services/complaint-support/'),
+    description: "Formal complaints to banks, exchanges, financial ombudsman services and regulators, prepared and followed up on your behalf with your approval.",
+    features: ["Regulatory Complaints", "Ombudsman Complaints", "Follow-up and Correspondence"],
     // Scale icon
     iconPath: "M3 6l9-4 9 4M3 6l9 4m-9-4v10l9 4m0-14l9 4m-9-4v14m9-14v10l-9 4",
   },
@@ -41,19 +48,19 @@ const services = [
         Our Services
       </span>
       <h2 class="text-[#0a0a0f] mb-5" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-        Comprehensive{" "}
-        <span class="text-[#6BA055]">Recovery Solutions</span>
+        Fraud Investigation and{" "}
+        <span class="text-[#6BA055]">Complaint Support</span>
       </h2>
       <p class="text-[#777] max-w-2xl mx-auto" style="font-size:15px;line-height:1.7">
-        From initial investigation to successful recovery, we provide end-to-end
-        support for scam victims worldwide.
+        From blockchain tracing to bank complaints, our licensed investigators help fraud victims
+        document their case and take it to the right institutions.
       </p>
     </div>
 
     <!-- Cards grid -->
     <div class="grid md:grid-cols-2 gap-5">
       {services.map((service, i) => (
-        <div class={`reveal delay-${i + 1} group relative p-7 rounded-xl border border-[#9ACF84]/40 bg-white hover:border-[#9ACF84]/70 hover:shadow-xl hover:shadow-[#9ACF84]/5 transition-all duration-300 cursor-pointer overflow-hidden`}>
+        <a href={service.href} class={`reveal delay-${i + 1} group relative block p-7 rounded-xl border border-[#9ACF84]/40 bg-white hover:border-[#9ACF84]/70 hover:shadow-xl hover:shadow-[#9ACF84]/5 transition-all duration-300 cursor-pointer overflow-hidden`}>
           <!-- Animated background icon -->
           <svg class="card-icon-bg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
             <path stroke-linecap="round" stroke-linejoin="round" d={service.iconPath} />
@@ -76,7 +83,7 @@ const services = [
               </span>
             ))}
           </div>
-        </div>
+        </a>
       ))}
     </div>
   </div>

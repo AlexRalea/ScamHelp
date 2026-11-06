@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.astro';
 import WhyChooseUsSection from '../components/WhyChooseUsSection.astro';
 import ConsultationSection from '../components/ConsultationSection.astro';
 import Footer from '../components/Footer.astro';
+import InfoBlock from '../components/InfoBlock.astro';
 import { allScams } from '../data/scam-pages';
 
 /* ────────────────────────────────────────────
@@ -24,7 +25,7 @@ export async function getStaticPaths() {
 /* ────────────────────────────────────────────
    Current page
    ──────────────────────────────────────────── */
-import { BASE as base, url } from '../lib/site';
+import { url } from '../lib/site';
 const siteUrl = "https://scamhelp.net";
 
 const { slug } = Astro.params;
@@ -36,9 +37,9 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteUrl}/` },
     { "@type": "ListItem", "position": 2, "name": "Common Scams", "item": `${siteUrl}/scams/` },
-    { "@type": "ListItem", "position": 3, "name": `${scam.scamType} Scam Recovery` },
+    { "@type": "ListItem", "position": 3, "name": `${scam.scamType} Scams`, "item": canonical },
   ],
 };
 
@@ -46,7 +47,7 @@ const breadcrumbSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": `${scam.scamType} Scam Recovery`,
+  "name": `${scam.scamType} Scam Investigation`,
   "description": scam.seoDescription,
   "url": canonical,
   "provider": {
@@ -55,7 +56,7 @@ const serviceSchema = {
     "name": "ScamHelp",
   },
   "areaServed": "Worldwide",
-  "serviceType": "Fund Recovery",
+  "serviceType": "Fraud investigation and complaint support",
 };
 ---
 
@@ -90,6 +91,13 @@ const serviceSchema = {
         {scam.contentParagraphs.map((p: string) => (
           <p class="text-white/45 mb-5 reveal" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">{p}</p>
         ))}
+        <!-- Approved "Warning signs" and "What to do now" texts from the Common Scams page -->
+        <p class="text-white/45 mb-5 reveal" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.8">
+          <strong class="text-white/70" style="font-weight:600">Warning signs:</strong> {scam.warningSigns}
+        </p>
+        <InfoBlock label="What to do now" class="max-w-none! reveal">
+          stop all payments; contact your bank or card issuer immediately; report the scam to the police and your national fraud reporting centre; keep all records, including transaction IDs, wallet addresses, screenshots and messages.
+        </InfoBlock>
       </div>
     </section>
 
@@ -111,7 +119,7 @@ const serviceSchema = {
               Who can we help?
             </h2>
             <p class="text-white/85" style="font-family:'Inter',sans-serif;font-size:15px;line-height:1.75">
-              If you're a victim of online fraud, you're not alone! Scam Help specializes in recovering assets lost to various online financial frauds. We craft winning strategies tailored to our client's needs and budget.
+              If you're a victim of online fraud, you're not alone! We help victims understand what happened to their money, trace where it went, and prepare the evidence that banks, exchanges and regulators need to review their case.
             </p>
           </div>
           <div class="flex-shrink-0 reveal from-right">
@@ -140,7 +148,7 @@ const serviceSchema = {
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
           {scam.relatedScams.map((rs: { slug: string; scamType: string; iconPath: string }, i: number) => (
-            <a href={`${base}/contact-${rs.slug}-scams`} class={`related-card reveal delay-${Math.min(i + 1, 5)}`}>
+            <a href={url(`/contact-${rs.slug}-scams/`)} class={`related-card reveal delay-${Math.min(i + 1, 5)}`}>
               <div class="w-10 h-10 rounded-xl bg-[#9ACF84]/8 flex items-center justify-center mb-3">
                 <svg class="w-5 h-5 text-[#9ACF84]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d={rs.iconPath} />

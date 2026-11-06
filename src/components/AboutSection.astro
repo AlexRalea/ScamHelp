@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/site';
 ---
 
 <section id="about" class="pt-12 pb-24 md:pt-14 md:pb-28 bg-white relative overflow-hidden">
@@ -12,7 +13,7 @@
         <div class="rounded-xl overflow-hidden about-img-frame" style="transform:rotateY(10deg);box-shadow:-24px 16px 60px rgba(0,0,0,0.18), -8px 6px 20px rgba(0,0,0,0.12);">
           <img
             src="https://images.unsplash.com/photo-1769740333462-9a63bfa914bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWFtJTIwY29ycG9yYXRlJTIwb2ZmaWNlfGVufDF8fHx8MTc3MjQ0MDc1MHww&ixlib=rb-4.1.0&q=80&w=1080"
-            alt="Professional team at ScamHelp"
+            alt="Professional team in an office"
             class="w-full h-[480px] object-cover"
             loading="lazy"
           />
@@ -31,7 +32,7 @@
                     style="font-family:'Montserrat',sans-serif;font-size:40px;font-weight:700"
                   >0+</div>
                   <div class="text-[#999]" style="font-family:'Montserrat',sans-serif;font-size:12px">
-                    Satisfied customers
+                    Clients helped
                   </div>
                 </div>
                 <div>
@@ -54,23 +55,23 @@
       <!-- Text column -->
       <div class="reveal from-right delay-1 order-1 lg:order-2">
         <span class="text-[#9ACF84] uppercase tracking-[0.2em] mb-5 block" style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600">
-          Who we are?
+          Who we are
         </span>
         <h2 class="text-[#0a0a0f] mb-6" style="font-family:'Montserrat',sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:600;line-height:1.15">
-          Netherlands-Based{" "}
-          <span class="text-[#6BA055]">Funds Recovery</span>{" "}
-          Experts
+          A licensed private investigation agency{" "}
+          <span class="text-[#6BA055]">specialising in online fraud</span>
         </h2>
         <p class="text-[#555] mb-8" style="font-size:15px;line-height:1.85">
-          Scam Help (registered in The Netherlands under Transparent Business Solutions B.V.,
-          Company Number 78091624) is a funds recovery company based in the Netherlands.
-          Our dedicated team of professional IT forensic analysts, cyber fraud investigators,
-          and case coordinators have vast working knowledge of online trading scams and other
-          types of fraud. We assist clients globally in submitting disputes against fraudulent entities.
+          ScamHelp is a registered trade name of Transparent Business Solutions B.V., a private
+          investigation agency based in The Hague and licensed by the Dutch Ministry of Justice and
+          Security (licence POB 07373, KvK 78091624). Our team of fraud investigators, financial
+          forensic analysts and case managers works on online investment, cryptocurrency and banking
+          fraud. We help clients worldwide prepare disputes and complaints against fraudulent merchants
+          and platforms, and work with independent investigators and specialists where a case requires it.
         </p>
 
         <a
-          href="#about"
+          href={url('/about/')}
           class="btn-scale inline-flex items-center gap-2 px-7 py-3 bg-[#9ACF84] text-[#0a0a0f] rounded-xl hover:bg-[#8BC275] transition-colors duration-200"
           style="font-family:'Montserrat',sans-serif;font-size:14px;font-weight:600"
         >
